@@ -62,6 +62,43 @@ service cloud.firestore {
       }
     }
 
+    // Support tickets: customers can create and update their own ticket thread,
+    // admins can view and reply to all tickets.
+    match /supportTickets/{ticketId} {
+      function isSignedIn() {
+        return request.auth != null;
+      }
+
+      function isAdmin() {
+        return isSignedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+      }
+
+      allow read: if isSignedIn() && (
+        resource.data.userId == request.auth.uid ||
+        isAdmin()
+      );
+
+      allow create: if isSignedIn()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.destinationName is string
+        && request.resource.data.tripId is string
+        && request.resource.data.messages is list
+        && request.resource.data.messages.size() > 0
+        && request.resource.data.messages[0].sender == request.auth.uid;
+
+      allow update: if isSignedIn() && (
+        isAdmin() ||
+        (
+          resource.data.userId == request.auth.uid
+          && request.resource.data.userId == resource.data.userId
+          && request.resource.data.destinationName == resource.data.destinationName
+          && request.resource.data.tripId == resource.data.tripId
+          && request.resource.data.createdAt == resource.data.createdAt
+          && request.resource.data.isResolved == resource.data.isResolved
+        )
+      );
+    }
+
     // Everything else is closed by default — no catch-all allow.
   }
 }

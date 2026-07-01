@@ -14,6 +14,7 @@ abstract class AuthRepository {
     required String name,
     required String email,
     required String password,
+    bool isAdmin = false,
   });
 
   Future<AppUser> signInWithGoogle();

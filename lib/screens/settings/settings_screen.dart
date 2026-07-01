@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../core/constants/app_spacing.dart';
 import '../../core/theme/app_colors.dart';
 import '../../providers/theme_provider.dart';
@@ -97,6 +98,19 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ListTile(contentPadding: EdgeInsets.zero, leading: const Icon(Icons.help_outline), title: const Text('Help Center'), trailing: const Icon(Icons.chevron_right), onTap: () {}),
               ListTile(contentPadding: EdgeInsets.zero, leading: const Icon(Icons.info_outline), title: const Text('About DeshExplorer'), trailing: const Icon(Icons.chevron_right), onTap: () => _showAbout(context)),
               ListTile(contentPadding: EdgeInsets.zero, leading: const Icon(Icons.privacy_tip_outlined), title: const Text('Privacy Policy'), trailing: const Icon(Icons.chevron_right), onTap: () {}),
+            ],
+          ),
+          const SizedBox(height: 24),
+          _SettingsSection(
+            title: 'Admin',
+            children: [
+              ListTile(
+                contentPadding: EdgeInsets.zero,
+                title: const Text('Admin Panel'),
+                subtitle: const Text('Manage support tickets'),
+                trailing: const Icon(Icons.arrow_forward),
+                onTap: () => context.push('/admin-login'),
+              ),
             ],
           ),
           const SizedBox(height: 24),

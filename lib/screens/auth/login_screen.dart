@@ -155,6 +155,26 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     ],
                   ),
                 ),
+                const SizedBox(height: 20),
+                Divider(color: Theme.of(context).dividerColor),
+                const SizedBox(height: 16),
+                Center(
+                  child: Column(
+                    children: [
+                      Text('Admin Portal', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.primary)),
+                      const SizedBox(height: 8),
+                      OutlinedButton.icon(
+                        onPressed: () => context.push(AppRoutes.adminLogin),
+                        icon: const Icon(Icons.admin_panel_settings_outlined),
+                        label: const Text('Admin Login'),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: AppColors.primary,
+                          minimumSize: const Size.fromHeight(48),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

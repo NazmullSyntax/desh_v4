@@ -14,18 +14,20 @@ class FirebaseAuthRepository implements AuthRepository {
   final fb.FirebaseAuth _auth;
   final GoogleSignIn _googleSignIn;
   final FirebaseFirestore _firestore;
+  AppUser? _cachedUser;
 
   FirebaseAuthRepository({fb.FirebaseAuth? auth, GoogleSignIn? googleSignIn, FirebaseFirestore? firestore})
       : _auth = auth ?? fb.FirebaseAuth.instance,
         _googleSignIn = googleSignIn ?? GoogleSignIn(),
         _firestore = firestore ?? FirebaseFirestore.instance;
 
-  AppUser _mapFirebaseUser(fb.User user) {
+  AppUser _mapFirebaseUser(fb.User user, {bool isAdmin = false}) {
     return AppUser(
       uid: user.uid,
       name: user.displayName,
       email: user.email,
       photoUrl: user.photoURL,
+      isAdmin: isAdmin,
       isEmailVerified: user.emailVerified,
       createdAt: user.metadata.creationTime,
     );
@@ -33,16 +35,26 @@ class FirebaseAuthRepository implements AuthRepository {
 
   @override
   Stream<AppUser?> get authStateChanges {
-    return _auth.authStateChanges().map((u) => u == null ? null : _mapFirebaseUser(u));
+    return _auth.authStateChanges().map((u) {
+      if (u == null) {
+        _cachedUser = null;
+        return null;
+      }
+      return _cachedUser?.uid == u.uid ? _cachedUser : _mapFirebaseUser(u);
+    });
   }
 
   @override
   AppUser? get currentUser {
     final u = _auth.currentUser;
-    return u == null ? null : _mapFirebaseUser(u);
+    if (u == null) {
+      _cachedUser = null;
+      return null;
+    }
+    return _cachedUser?.uid == u.uid ? _cachedUser : _mapFirebaseUser(u);
   }
 
-  Future<void> _syncUserProfile(fb.User user, {String? name}) async {
+  Future<void> _syncUserProfile(fb.User user, {String? name, bool isAdmin = false}) async {
     if (user.isAnonymous) return;
 
     await _firestore.collection('users').doc(user.uid).set({
@@ -50,6 +62,7 @@ class FirebaseAuthRepository implements AuthRepository {
       'name': name ?? user.displayName ?? '',
       'email': user.email,
       'photoUrl': user.photoURL,
+      'isAdmin': isAdmin,
       'isEmailVerified': user.emailVerified,
       'createdAt': user.metadata.creationTime?.toIso8601String(),
       'updatedAt': FieldValue.serverTimestamp(),
@@ -59,8 +72,11 @@ class FirebaseAuthRepository implements AuthRepository {
   @override
   Future<AppUser> signInWithEmail({required String email, required String password}) async {
     final credential = await _auth.signInWithEmailAndPassword(email: email, password: password);
-    await _syncUserProfile(credential.user!);
-    return _mapFirebaseUser(credential.user!);
+    final doc = await _firestore.collection('users').doc(credential.user!.uid).get();
+    final isAdmin = (doc.data()?['isAdmin'] as bool?) ?? false;
+    await _syncUserProfile(credential.user!, isAdmin: isAdmin);
+    _cachedUser = _mapFirebaseUser(credential.user!, isAdmin: isAdmin);
+    return _cachedUser!;
   }
 
   @override
@@ -68,12 +84,14 @@ class FirebaseAuthRepository implements AuthRepository {
     required String name,
     required String email,
     required String password,
+    bool isAdmin = false,
   }) async {
     final credential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
     await credential.user!.updateDisplayName(name);
     await credential.user!.sendEmailVerification();
-    await _syncUserProfile(credential.user!, name: name);
-    return _mapFirebaseUser(credential.user!).copyWith(name: name);
+    await _syncUserProfile(credential.user!, name: name, isAdmin: isAdmin);
+    _cachedUser = _mapFirebaseUser(credential.user!, isAdmin: isAdmin).copyWith(name: name);
+    return _cachedUser!;
   }
 
   @override
@@ -89,13 +107,15 @@ class FirebaseAuthRepository implements AuthRepository {
     );
     final userCredential = await _auth.signInWithCredential(credential);
     await _syncUserProfile(userCredential.user!);
-    return _mapFirebaseUser(userCredential.user!);
+    _cachedUser = _mapFirebaseUser(userCredential.user!);
+    return _cachedUser!;
   }
 
   @override
   Future<AppUser> signInAsGuest() async {
     final credential = await _auth.signInAnonymously();
-    return AppUser(uid: credential.user!.uid, isGuest: true);
+    _cachedUser = AppUser(uid: credential.user!.uid, isGuest: true);
+    return _cachedUser!;
   }
 
   @override
@@ -112,6 +132,7 @@ class FirebaseAuthRepository implements AuthRepository {
       print('Warning: Google Sign-In signOut failed: $e');
     }
     await _auth.signOut();
+    _cachedUser = null;
   }
 
   @override

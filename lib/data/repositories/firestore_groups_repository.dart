@@ -26,8 +26,6 @@ class FirestoreGroupsRepository implements GroupsRepository {
     return TravelGroup.fromJson(data);
   }
 
-  String _normalize(String value) => value.trim().toLowerCase().replaceAll(RegExp(r'[^a-z0-9]+'), '');
-
   @override
   Stream<List<TravelGroup>> watchGroupsForPlace(String placeId) {
     return _groups.snapshots().map((snap) {

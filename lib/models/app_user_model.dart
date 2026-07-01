@@ -8,6 +8,7 @@ class AppUser {
   final String? email;
   final String? photoUrl;
   final bool isGuest;
+  final bool isAdmin;
   final bool isEmailVerified;
   final DateTime? createdAt;
 
@@ -23,6 +24,7 @@ class AppUser {
     this.email,
     this.photoUrl,
     this.isGuest = false,
+    this.isAdmin = false,
     this.isEmailVerified = false,
     this.createdAt,
     this.placesVisited = 0,
@@ -46,6 +48,7 @@ class AppUser {
       email: json['email'] as String?,
       photoUrl: json['photoUrl'] as String?,
       isGuest: json['isGuest'] as bool? ?? false,
+      isAdmin: json['isAdmin'] as bool? ?? false,
       isEmailVerified: json['isEmailVerified'] as bool? ?? false,
       createdAt: json['createdAt'] != null ? DateTime.tryParse(json['createdAt'] as String) : null,
       placesVisited: json['placesVisited'] as int? ?? 0,
@@ -61,6 +64,7 @@ class AppUser {
         'email': email,
         'photoUrl': photoUrl,
         'isGuest': isGuest,
+        'isAdmin': isAdmin,
         'isEmailVerified': isEmailVerified,
         'createdAt': createdAt?.toIso8601String(),
         'placesVisited': placesVisited,
@@ -81,6 +85,7 @@ class AppUser {
       email: email ?? this.email,
       photoUrl: photoUrl ?? this.photoUrl,
       isGuest: isGuest,
+      isAdmin: isAdmin,
       isEmailVerified: isEmailVerified ?? this.isEmailVerified,
       createdAt: createdAt,
       placesVisited: placesVisited,

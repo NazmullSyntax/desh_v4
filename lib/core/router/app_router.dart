@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../models/app_user_model.dart';
 import '../../providers/auth_provider.dart';
+import '../../screens/admin/admin_login_screen.dart';
 import '../../screens/auth/forgot_password_screen.dart';
 import '../../screens/auth/login_screen.dart';
 import '../../screens/auth/register_screen.dart';
@@ -31,6 +32,7 @@ class AppRoutes {
   static const splash = '/';
   static const onboarding = '/onboarding';
   static const login = '/login';
+  static const adminLogin = '/admin-login';
   static const register = '/register';
   static const forgotPassword = '/forgot-password';
 
@@ -98,6 +100,7 @@ GoRouter buildRouter(Ref ref) {
       GoRoute(path: AppRoutes.splash, builder: (context, state) => const SplashScreen()),
       GoRoute(path: AppRoutes.onboarding, builder: (context, state) => const OnboardingScreen()),
       GoRoute(path: AppRoutes.login, builder: (context, state) => const LoginScreen()),
+      GoRoute(path: AppRoutes.adminLogin, builder: (context, state) => const AdminLoginScreen()),
       GoRoute(path: AppRoutes.register, builder: (context, state) => const RegisterScreen()),
       GoRoute(path: AppRoutes.forgotPassword, builder: (context, state) => const ForgotPasswordScreen()),
 

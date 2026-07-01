@@ -1,0 +1,260 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../providers/auth_provider.dart';
+import '../../widgets/common/app_text_field.dart';
+import 'admin_panel_screen.dart';
+
+class AdminLoginScreen extends ConsumerStatefulWidget {
+  const AdminLoginScreen({super.key});
+
+  @override
+  ConsumerState<AdminLoginScreen> createState() => _AdminLoginScreenState();
+}
+
+class _AdminLoginScreenState extends ConsumerState<AdminLoginScreen> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  bool _isLoading = false;
+
+  final _nameController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _login() async {
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
+
+    if (email.isEmpty || password.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please fill in all fields')),
+      );
+      return;
+    }
+
+    setState(() => _isLoading = true);
+    final controller = ref.read(authControllerProvider.notifier);
+    final success = await controller.signIn(email, password);
+
+    if (!mounted) return;
+    if (success) {
+      final user = ref.read(currentUserProvider);
+      if (user?.isAdmin ?? false) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) => const AdminPanelScreen()),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('This account is not an admin account.')),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Invalid admin credentials')),
+      );
+    }
+    if (mounted) setState(() => _isLoading = false);
+  }
+
+  Future<void> _createAdminAccount() async {
+    final name = _nameController.text.trim();
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
+
+    if (name.isEmpty || email.isEmpty || password.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter name, email and password')),
+      );
+      return;
+    }
+
+    setState(() => _isLoading = true);
+    final controller = ref.read(authControllerProvider.notifier);
+    final success = await controller.register(name, email, password, isAdmin: true);
+
+    if (!mounted) return;
+    if (success) {
+      final user = ref.read(currentUserProvider);
+      if (user?.isAdmin ?? false) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) => const AdminPanelScreen()),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Admin account created. Please sign in again.')),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Could not create admin account')),
+      );
+    }
+    if (mounted) setState(() => _isLoading = false);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Admin Login'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.blue.shade50,
+                border: Border.all(color: Colors.blue.shade200),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  Icon(Icons.info_outline, color: Colors.blue.shade700),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      'Admin Portal - Manage customer support messages and replies',
+                      style: TextStyle(color: Colors.blue.shade700, fontSize: 14),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 32),
+            Text('Admin Portal', style: Theme.of(context).textTheme.headlineMedium),
+            const SizedBox(height: 8),
+            Text('Log in to view and reply to customer messages', style: Theme.of(context).textTheme.bodyMedium),
+            const SizedBox(height: 32),
+            AppTextField(
+              label: 'Full Name',
+              controller: _nameController,
+              hint: 'Support Admin',
+              prefixIcon: Icons.person_outline,
+            ),
+            const SizedBox(height: 16),
+            AppTextField(
+              label: 'Email',
+              controller: _emailController,
+              hint: 'admin@deshexplorer.com',
+              prefixIcon: Icons.mail_outline,
+            ),
+            const SizedBox(height: 16),
+            AppTextField(
+              label: 'Password',
+              controller: _passwordController,
+              hint: 'Enter your password',
+              prefixIcon: Icons.lock_outline,
+              obscureText: true,
+            ),
+            const SizedBox(height: 28),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: _login,
+                icon: const Icon(Icons.login),
+                label: Text(_isLoading ? 'Logging in...' : 'Login as Admin'),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  backgroundColor: Colors.blue.shade600,
+                ),
+              ),
+            ),
+            const SizedBox(height: 12),
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton.icon(
+                onPressed: _createAdminAccount,
+                icon: const Icon(Icons.person_add_alt_1),
+                label: Text(_isLoading ? 'Creating account...' : 'Create Admin Account'),
+                style: OutlinedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  foregroundColor: Colors.blue.shade700,
+                ),
+              ),
+            ),
+            const SizedBox(height: 24),
+            Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: Colors.amber.shade50,
+                border: Border.all(color: Colors.amber.shade200),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Create or use an admin account:',
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(color: Colors.amber.shade900, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 8),
+                  Text('1. Enter your name, email and password', style: TextStyle(fontSize: 13, color: Colors.amber.shade800)),
+                  const SizedBox(height: 4),
+                  Text('2. Tap “Create Admin Account” to register', style: TextStyle(fontSize: 13, color: Colors.amber.shade800)),
+                  const SizedBox(height: 4),
+                  Text('3. Then sign in with those same credentials', style: TextStyle(fontSize: 13, color: Colors.amber.shade800)),
+                ],
+              ),
+            ),
+            const SizedBox(height: 24),
+            Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: Colors.green.shade50,
+                border: Border.all(color: Colors.green.shade200),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'What You Can Do:',
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(color: Colors.green.shade900, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 8),
+                  _InfoRow(icon: Icons.mail, text: 'View all customer messages'),
+                  _InfoRow(icon: Icons.reply, text: 'Reply to customer inquiries'),
+                  _InfoRow(icon: Icons.check_circle, text: 'Mark tickets as resolved'),
+                  _InfoRow(icon: Icons.filter_alt, text: 'Filter and sort tickets'),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _InfoRow extends StatelessWidget {
+  final IconData icon;
+  final String text;
+  const _InfoRow({required this.icon, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 6),
+      child: Row(
+        children: [
+          Icon(icon, size: 18, color: Colors.green.shade700),
+          const SizedBox(width: 10),
+          Expanded(child: Text(text, style: TextStyle(fontSize: 13, color: Colors.green.shade800))),
+        ],
+      ),
+    );
+  }
+}

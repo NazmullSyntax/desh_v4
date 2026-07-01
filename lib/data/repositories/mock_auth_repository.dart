@@ -11,7 +11,7 @@ class MockAuthRepository implements AuthRepository {
   final _controller = StreamController<AppUser?>.broadcast();
   AppUser? _current;
 
-  final Map<String, String> _registeredUsers = {}; // email -> password
+  final Map<String, ({String password, bool isAdmin})> _registeredUsers = {};
 
   @override
   Stream<AppUser?> get authStateChanges => _controller.stream;
@@ -27,10 +27,16 @@ class MockAuthRepository implements AuthRepository {
   @override
   Future<AppUser> signInWithEmail({required String email, required String password}) async {
     await Future.delayed(const Duration(milliseconds: 600));
-    if (_registeredUsers[email] != password) {
+    final entry = _registeredUsers[email];
+    if (entry == null || entry.password != password) {
       throw Exception('Invalid email or password.');
     }
-    final user = AppUser(uid: email.hashCode.toString(), email: email, name: email.split('@').first);
+    final user = AppUser(
+      uid: email.hashCode.toString(),
+      email: email,
+      name: email.split('@').first,
+      isAdmin: entry.isAdmin,
+    );
     _emit(user);
     return user;
   }
@@ -40,10 +46,17 @@ class MockAuthRepository implements AuthRepository {
     required String name,
     required String email,
     required String password,
+    bool isAdmin = false,
   }) async {
     await Future.delayed(const Duration(milliseconds: 600));
-    _registeredUsers[email] = password;
-    final user = AppUser(uid: email.hashCode.toString(), email: email, name: name, createdAt: DateTime.now());
+    _registeredUsers[email] = (password: password, isAdmin: isAdmin);
+    final user = AppUser(
+      uid: email.hashCode.toString(),
+      email: email,
+      name: name,
+      createdAt: DateTime.now(),
+      isAdmin: isAdmin,
+    );
     _emit(user);
     return user;
   }

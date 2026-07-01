@@ -75,10 +75,10 @@ class AuthController extends StateNotifier<AsyncValue<void>> {
     }
   }
 
-  Future<bool> register(String name, String email, String password) async {
+  Future<bool> register(String name, String email, String password, {bool isAdmin = false}) async {
     state = const AsyncValue.loading();
     try {
-      await _repository.registerWithEmail(name: name, email: email, password: password);
+      await _repository.registerWithEmail(name: name, email: email, password: password, isAdmin: isAdmin);
       state = const AsyncValue.data(null);
       return true;
     } catch (e, st) {
