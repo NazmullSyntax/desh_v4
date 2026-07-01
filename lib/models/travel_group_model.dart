@@ -70,6 +70,31 @@ class TravelGroup {
   bool hasPendingRequest(String uid) => pendingRequests.any((m) => m.uid == uid);
   bool isOwner(String uid) => createdByUid == uid;
 
+  bool matchesDestination({required String placeId, String? destinationName}) {
+    final normalizedPlaceId = _normalize(placeId);
+    final normalizedDestination = _normalize(destinationName ?? '');
+    final normalizedGroupPlaceId = _normalize(this.placeId);
+    final normalizedGroupDestination = _normalize(this.destinationName);
+
+    if (normalizedPlaceId.isEmpty || normalizedGroupPlaceId.isEmpty) return false;
+
+    return normalizedPlaceId == normalizedGroupPlaceId ||
+        normalizedPlaceId == normalizedGroupDestination ||
+        normalizedDestination == normalizedGroupPlaceId ||
+        normalizedDestination == normalizedGroupDestination ||
+        normalizedPlaceId.contains(normalizedGroupPlaceId) ||
+        normalizedGroupPlaceId.contains(normalizedPlaceId) ||
+        normalizedPlaceId.contains(normalizedGroupDestination) ||
+        normalizedGroupDestination.contains(normalizedPlaceId);
+  }
+
+  String _normalize(String value) {
+    return value
+        .trim()
+        .toLowerCase()
+        .replaceAll(RegExp(r'[^a-z0-9]+'), '');
+  }
+
   TravelGroup copyWith({
     List<GroupMemberProfile>? members,
     List<GroupMemberProfile>? pendingRequests,

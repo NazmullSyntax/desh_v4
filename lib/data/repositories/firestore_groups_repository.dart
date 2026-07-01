@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../domain/repositories/groups_repository.dart';
 import '../../models/travel_group_model.dart';
@@ -25,34 +26,80 @@ class FirestoreGroupsRepository implements GroupsRepository {
     return TravelGroup.fromJson(data);
   }
 
+  String _normalize(String value) => value.trim().toLowerCase().replaceAll(RegExp(r'[^a-z0-9]+'), '');
+
   @override
   Stream<List<TravelGroup>> watchGroupsForPlace(String placeId) {
-    return _groups
-        .where('placeId', isEqualTo: placeId)
-        .orderBy('createdAt', descending: true)
-        .snapshots()
-        .map((snap) => snap.docs.map(_fromDoc).toList());
+    return _groups.snapshots().map((snap) {
+      final filtered = snap.docs
+          .map(_fromDoc)
+          .where((group) => group.matchesDestination(placeId: placeId))
+          .toList();
+      filtered.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+      return filtered;
+    }).handleError((error) {
+      print('Error watching groups for place $placeId: $error');
+      return [];
+    });
   }
 
   @override
   Stream<List<TravelGroup>> watchMyGroups(String uid) {
     // Firestore can't OR across "members contains uid" and "pendingRequests
     // contains uid" in one query, so this merges two listeners client-side.
-    final memberStream = _groups.where('memberUids', arrayContains: uid).snapshots();
-    final pendingStream = _groups.where('pendingUids', arrayContains: uid).snapshots();
+    return _combineGroupStreams(
+      _groups.where('memberUids', arrayContains: uid).snapshots(),
+      _groups.where('pendingUids', arrayContains: uid).snapshots(),
+    );
+  }
 
-    return memberStream.asyncMap((memberSnap) async {
-      final pendingSnap = await pendingStream.first;
-      final byId = <String, TravelGroup>{};
-      for (final d in memberSnap.docs) {
-        byId[d.id] = _fromDoc(d);
+  /// Combines two Firestore snapshot streams by emitting whenever either updates.
+  /// Keeps track of the latest snapshot from each stream and merges results.
+  Stream<List<TravelGroup>> _combineGroupStreams(
+    Stream<QuerySnapshot<Map<String, dynamic>>> stream1,
+    Stream<QuerySnapshot<Map<String, dynamic>>> stream2,
+  ) {
+    final controller = StreamController<List<TravelGroup>>.broadcast();
+    
+    var latestSnap1 = null;
+    var latestSnap2 = null;
+    
+    void emitMerged() {
+      if (latestSnap1 != null && latestSnap2 != null) {
+        final byId = <String, TravelGroup>{};
+        for (final d in latestSnap1.docs) {
+          byId[d.id] = _fromDoc(d);
+        }
+        for (final d in latestSnap2.docs) {
+          byId[d.id] = _fromDoc(d);
+        }
+        final list = byId.values.toList()..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+        controller.add(list);
       }
-      for (final d in pendingSnap.docs) {
-        byId[d.id] = _fromDoc(d);
-      }
-      final list = byId.values.toList()..sort((a, b) => b.createdAt.compareTo(a.createdAt));
-      return list;
-    });
+    }
+    
+    final sub1 = stream1.listen(
+      (snap) {
+        latestSnap1 = snap;
+        emitMerged();
+      },
+      onError: (e) => controller.addError(e),
+    );
+    
+    final sub2 = stream2.listen(
+      (snap) {
+        latestSnap2 = snap;
+        emitMerged();
+      },
+      onError: (e) => controller.addError(e),
+    );
+    
+    controller.onCancel = () {
+      sub1.cancel();
+      sub2.cancel();
+    };
+    
+    return controller.stream;
   }
 
   @override

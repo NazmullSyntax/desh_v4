@@ -112,8 +112,41 @@ class ProfileScreen extends ConsumerWidget {
           const SizedBox(height: 16),
           OutlinedButton.icon(
             onPressed: () async {
-              await ref.read(authControllerProvider.notifier).signOut();
-              if (context.mounted) context.go(AppRoutes.login);
+              final confirmed = await showDialog<bool>(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Log Out'),
+                  content: const Text('Are you sure you want to log out?'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, false),
+                      child: const Text('Cancel'),
+                    ),
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, true),
+                      child: const Text('Log Out', style: TextStyle(color: AppColors.error)),
+                    ),
+                  ],
+                ),
+              );
+
+              if (confirmed == true && context.mounted) {
+                try {
+                  await ref.read(authControllerProvider.notifier).signOut();
+                  if (context.mounted) {
+                    context.go(AppRoutes.login);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Logged out successfully'), duration: Duration(seconds: 2)),
+                    );
+                  }
+                } catch (e) {
+                  if (context.mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Error logging out: $e'), backgroundColor: AppColors.error),
+                    );
+                  }
+                }
+              }
             },
             icon: const Icon(Icons.logout, color: AppColors.error),
             label: const Text('Log Out', style: TextStyle(color: AppColors.error)),

@@ -116,7 +116,7 @@ class MockGroupsRepository implements GroupsRepository {
   Stream<List<TravelGroup>> watchGroupsForPlace(String placeId) {
     Future.microtask(_emitGroups);
     return _groupsController.stream.map(
-      (groups) => groups.where((g) => g.placeId == placeId).toList(),
+      (groups) => groups.where((g) => g.matchesDestination(placeId: placeId)).toList(),
     );
   }
 

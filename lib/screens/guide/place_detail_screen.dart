@@ -45,128 +45,141 @@ class _PlaceDetailBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isFavorite = ref.watch(favoritesProvider).contains(place.id);
+    final coverImage = place.imageUrls.isNotEmpty ? place.imageUrls.first : place.coverImage;
 
-    return CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          expandedHeight: 300,
-          pinned: true,
-          actions: [
-            IconButton(
-              onPressed: () => ref.read(toggleFavoriteProvider)(place.id),
-              icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border, color: isFavorite ? AppColors.accent : Colors.white),
-            ),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.share_outlined, color: Colors.white)),
-          ],
-          flexibleSpace: FlexibleSpaceBar(
-            background: _PhotoGallery(imageUrls: place.imageUrls.isNotEmpty ? place.imageUrls : [place.coverImage]),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => CreateGroupScreen(placeId: place.id, destinationName: place.name, coverImage: coverImage),
           ),
         ),
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.all(AppSpacing.screenPadding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(place.name, style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 26)),
-                          Text(place.banglaName, style: Theme.of(context).textTheme.bodyMedium),
-                        ],
-                      ),
-                    ),
-                    if (place.averageRating > 0) RatingBadge(rating: place.averageRating),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Wrap(
-                  spacing: 8,
-                  children: place.category.map((c) => Chip(label: Text(c))).toList(),
-                ),
-                const SizedBox(height: 18),
-                Text(place.description, style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.6)),
-
-                const SizedBox(height: 24),
-                _InfoGrid(place: place),
-
-                const SizedBox(height: 24),
-                _TravelersPlanningSection(place: place),
-
-                const SizedBox(height: 24),
-                if (place.history.isNotEmpty) _ExpandableSection(title: 'History', content: place.history, icon: Icons.history_edu_outlined),
-
-                if (place.travelTips.isNotEmpty) ...[
-                  const SizedBox(height: 20),
-                  Text('Travel Tips', style: Theme.of(context).textTheme.titleLarge),
-                  const SizedBox(height: 10),
-                  ...place.travelTips.map((tip) => Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                        child: Row(
+        icon: const Icon(Icons.add_rounded),
+        label: const Text('Start Trip'),
+        backgroundColor: AppColors.primary,
+      ),
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: 300,
+            pinned: true,
+            actions: [
+              IconButton(
+                onPressed: () => ref.read(toggleFavoriteProvider)(place.id),
+                icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border, color: isFavorite ? AppColors.accent : Colors.white),
+              ),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.share_outlined, color: Colors.white)),
+            ],
+            flexibleSpace: FlexibleSpaceBar(
+              background: _PhotoGallery(imageUrls: place.imageUrls.isNotEmpty ? place.imageUrls : [place.coverImage]),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(AppSpacing.screenPadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Icon(Icons.check_circle, size: 18, color: AppColors.primary),
-                            const SizedBox(width: 8),
-                            Expanded(child: Text(tip, style: Theme.of(context).textTheme.bodyMedium)),
+                            Text(place.name, style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 26)),
+                            Text(place.banglaName, style: Theme.of(context).textTheme.bodyMedium),
                           ],
                         ),
-                      )),
-                ],
+                      ),
+                      if (place.averageRating > 0) RatingBadge(rating: place.averageRating),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    children: place.category.map((c) => Chip(label: Text(c))).toList(),
+                  ),
+                  const SizedBox(height: 18),
+                  Text(place.description, style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.6)),
 
-                const SizedBox(height: 24),
-                Text('Location', style: Theme.of(context).textTheme.titleLarge),
-                const SizedBox(height: 10),
-                _MapPreviewCard(place: place),
-
-                if (place.nearbyHotels.isNotEmpty) ...[
                   const SizedBox(height: 24),
-                  SectionHeader(title: 'Hotels Nearby'),
-                  _NearbyRow(items: place.nearbyHotels),
-                ],
+                  _InfoGrid(place: place),
 
-                if (place.nearbyRestaurants.isNotEmpty) ...[
                   const SizedBox(height: 24),
-                  SectionHeader(title: 'Restaurants Nearby'),
-                  _NearbyRow(items: place.nearbyRestaurants),
-                ],
+                  _TravelersPlanningSection(place: place),
 
-                if (place.nearbyAttractions.isNotEmpty) ...[
                   const SizedBox(height: 24),
-                  SectionHeader(title: 'Nearby Attractions'),
-                  _NearbyRow(items: place.nearbyAttractions),
-                ],
+                  if (place.history.isNotEmpty) _ExpandableSection(title: 'History', content: place.history, icon: Icons.history_edu_outlined),
 
-                if (place.emergencyContacts.isNotEmpty) ...[
-                  const SizedBox(height: 24),
-                  Text('Emergency Contacts', style: Theme.of(context).textTheme.titleLarge),
-                  const SizedBox(height: 10),
-                  ...place.emergencyContacts.map((c) => _EmergencyContactTile(contact: c)),
-                ],
-
-                const SizedBox(height: 24),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('User Reviews', style: Theme.of(context).textTheme.titleLarge),
-                    Text('${place.reviews.length} reviews', style: Theme.of(context).textTheme.bodySmall),
+                  if (place.travelTips.isNotEmpty) ...[
+                    const SizedBox(height: 20),
+                    Text('Travel Tips', style: Theme.of(context).textTheme.titleLarge),
+                    const SizedBox(height: 10),
+                    ...place.travelTips.map((tip) => Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Icon(Icons.check_circle, size: 18, color: AppColors.primary),
+                              const SizedBox(width: 8),
+                              Expanded(child: Text(tip, style: Theme.of(context).textTheme.bodyMedium)),
+                            ],
+                          ),
+                        )),
                   ],
-                ),
-                const SizedBox(height: 10),
-                if (place.reviews.isEmpty)
-                  const EmptyState(icon: Icons.rate_review_outlined, title: 'No reviews yet', subtitle: 'Be the first to review this place')
-                else
-                  ...place.reviews.map((r) => _ReviewTile(review: r)),
 
-                const SizedBox(height: 100),
-              ],
+                  const SizedBox(height: 24),
+                  Text('Location', style: Theme.of(context).textTheme.titleLarge),
+                  const SizedBox(height: 10),
+                  _MapPreviewCard(place: place),
+
+                  if (place.nearbyHotels.isNotEmpty) ...[
+                    const SizedBox(height: 24),
+                    SectionHeader(title: 'Hotels Nearby'),
+                    _NearbyRow(items: place.nearbyHotels),
+                  ],
+
+                  if (place.nearbyRestaurants.isNotEmpty) ...[
+                    const SizedBox(height: 24),
+                    SectionHeader(title: 'Restaurants Nearby'),
+                    _NearbyRow(items: place.nearbyRestaurants),
+                  ],
+
+                  if (place.nearbyAttractions.isNotEmpty) ...[
+                    const SizedBox(height: 24),
+                    SectionHeader(title: 'Nearby Attractions'),
+                    _NearbyRow(items: place.nearbyAttractions),
+                  ],
+
+                  if (place.emergencyContacts.isNotEmpty) ...[
+                    const SizedBox(height: 24),
+                    Text('Emergency Contacts', style: Theme.of(context).textTheme.titleLarge),
+                    const SizedBox(height: 10),
+                    ...place.emergencyContacts.map((c) => _EmergencyContactTile(contact: c)),
+                  ],
+
+                  const SizedBox(height: 24),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('User Reviews', style: Theme.of(context).textTheme.titleLarge),
+                      Text('${place.reviews.length} reviews', style: Theme.of(context).textTheme.bodySmall),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  if (place.reviews.isEmpty)
+                    const EmptyState(icon: Icons.rate_review_outlined, title: 'No reviews yet', subtitle: 'Be the first to review this place')
+                  else
+                    ...place.reviews.map((r) => _ReviewTile(review: r)),
+
+                  const SizedBox(height: 100),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -248,25 +261,30 @@ class _TravelersPlanningSection extends ConsumerWidget {
                       style: OutlinedButton.styleFrom(
                         foregroundColor: Colors.white,
                         side: const BorderSide(color: Colors.white70),
+                        padding: const EdgeInsets.symmetric(vertical: 12),
                       ),
                       onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (_) => GroupsForPlaceScreen(placeId: place.id, destinationName: place.name, coverImage: coverImage),
                         ),
                       ),
-                      child: Text(groups.isEmpty ? 'Browse Groups' : 'View ${groups.length} ${groups.length == 1 ? 'Group' : 'Groups'}'),
+                      child: Text(groups.isEmpty ? 'Browse Groups' : 'View ${groups.length} ${groups.length == 1 ? 'Group' : 'Groups'}', style: const TextStyle(fontWeight: FontWeight.w600)),
                     ),
                   ),
                   const SizedBox(width: 10),
                   Expanded(
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(backgroundColor: Colors.white, foregroundColor: AppColors.primaryDark),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: AppColors.primaryDark,
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                      ),
                       onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (_) => CreateGroupScreen(placeId: place.id, destinationName: place.name, coverImage: coverImage),
                         ),
                       ),
-                      child: const Text('Create Trip'),
+                      child: const Text('Create Trip', style: TextStyle(fontWeight: FontWeight.w600)),
                     ),
                   ),
                 ],

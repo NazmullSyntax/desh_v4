@@ -78,9 +78,9 @@ class _GroupCard extends ConsumerWidget {
     final currentUser = ref.watch(currentUserProvider);
     final isMember = currentUser != null && group.isMember(currentUser.uid);
     final isPending = currentUser != null && group.hasPendingRequest(currentUser.uid);
+    final canJoin = currentUser != null && !isMember && !isPending && !group.isFull;
 
-    return InkWell(
-      borderRadius: BorderRadius.circular(16),
+    return GestureDetector(
       onTap: () => context.push('${AppRoutes.groupDetail}?id=${group.id}'),
       child: Container(
         padding: const EdgeInsets.all(AppSpacing.cardPadding),
@@ -145,6 +145,10 @@ class _GroupCard extends ConsumerWidget {
             ),
             const SizedBox(height: 10),
             _AvatarStack(members: group.members),
+            if (canJoin) ...[
+              const SizedBox(height: 12),
+              _JoinButton(group: group),
+            ],
           ],
         ),
       ),
@@ -251,6 +255,61 @@ class _InitialAvatar extends StatelessWidget {
         border: Border.all(color: Theme.of(context).scaffoldBackgroundColor, width: 2),
       ),
       child: Text(initial, style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700)),
+    );
+  }
+}
+
+class _JoinButton extends ConsumerStatefulWidget {
+  final TravelGroup group;
+  const _JoinButton({required this.group});
+
+  @override
+  ConsumerState<_JoinButton> createState() => _JoinButtonState();
+}
+
+class _JoinButtonState extends ConsumerState<_JoinButton> {
+  bool _isLoading = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton.icon(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primary,
+          foregroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(vertical: 10),
+        ),
+        onPressed: _isLoading
+            ? null
+            : () async {
+                setState(() => _isLoading = true);
+                try {
+                  await ref.read(groupsActionsProvider).joinOrRequest(widget.group);
+                  if (mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          widget.group.isRequestApprovalRequired
+                              ? 'Request sent! Waiting for organizer approval.'
+                              : 'You joined the group!',
+                        ),
+                      ),
+                    );
+                  }
+                } catch (e) {
+                  if (mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Error: $e')),
+                    );
+                  }
+                } finally {
+                  if (mounted) setState(() => _isLoading = false);
+                }
+              },
+        icon: _isLoading ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2, valueColor: AlwaysStoppedAnimation(Colors.white))) : const Icon(Icons.group_add_rounded, size: 18),
+        label: Text(_isLoading ? 'Joining...' : (widget.group.isRequestApprovalRequired ? 'Request to Join' : 'Join Group')),
+      ),
     );
   }
 }

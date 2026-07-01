@@ -105,7 +105,12 @@ class FirebaseAuthRepository implements AuthRepository {
 
   @override
   Future<void> signOut() async {
-    await _googleSignIn.signOut();
+    try {
+      await _googleSignIn.signOut();
+    } catch (e) {
+      // Google Sign-In may fail if not properly configured, but we should still sign out from Firebase
+      print('Warning: Google Sign-In signOut failed: $e');
+    }
     await _auth.signOut();
   }
 
