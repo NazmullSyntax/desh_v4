@@ -58,7 +58,7 @@ class TripResultScreen extends StatelessWidget {
                 const SizedBox(height: 6),
                 Text(
                   '${formatter.format(plan.startDate)} - ${formatter.format(plan.endDate)}',
-                  style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 13),
+                  style: TextStyle(color: Colors.white.withValues(alpha: 0.9), fontSize: 13),
                 ),
                 const SizedBox(height: 12),
                 Row(
@@ -135,7 +135,7 @@ class _StatChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-      decoration: BoxDecoration(color: Colors.white.withOpacity(0.2), borderRadius: BorderRadius.circular(10)),
+      decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.2), borderRadius: BorderRadius.circular(10)),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -175,7 +175,7 @@ class _BudgetCard extends StatelessWidget {
             children: [
               Text('Total Estimated Budget', style: Theme.of(context).textTheme.bodyMedium),
               Text(
-                '${formatBDT(estimate.total)}',
+                formatBDT(estimate.total),
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(color: AppColors.primary, fontWeight: FontWeight.w700),
               ),
             ],
@@ -266,7 +266,7 @@ class _ItineraryDayCard extends StatelessWidget {
                       width: 28,
                       height: 28,
                       margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(color: AppColors.primary.withOpacity(0.1), shape: BoxShape.circle),
+                      decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: 0.1), shape: BoxShape.circle),
                       child: Icon(_iconForKey(item.icon), size: 15, color: AppColors.primary),
                     ),
                     Expanded(

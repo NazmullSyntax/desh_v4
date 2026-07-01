@@ -377,7 +377,7 @@ class _SavedTripTile extends StatelessWidget {
               Container(
                 width: 48,
                 height: 48,
-                decoration: BoxDecoration(color: AppColors.primary.withOpacity(0.12), borderRadius: BorderRadius.circular(12)),
+                decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(12)),
                 child: const Icon(Icons.card_travel, color: AppColors.primary),
               ),
               const SizedBox(width: 12),

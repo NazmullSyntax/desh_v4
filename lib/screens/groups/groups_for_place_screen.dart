@@ -165,7 +165,7 @@ class _StatusChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(color: color.withOpacity(0.14), borderRadius: BorderRadius.circular(8)),
+      decoration: BoxDecoration(color: color.withValues(alpha: 0.14), borderRadius: BorderRadius.circular(8)),
       child: Text(label, style: TextStyle(color: color, fontSize: 11, fontWeight: FontWeight.w600)),
     );
   }
@@ -181,7 +181,7 @@ class _InfoPill extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: AppColors.secondary.withOpacity(0.1),
+        color: AppColors.secondary.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -283,26 +283,25 @@ class _JoinButtonState extends ConsumerState<_JoinButton> {
         onPressed: _isLoading
             ? null
             : () async {
+                final messenger = ScaffoldMessenger.of(context);
                 setState(() => _isLoading = true);
                 try {
                   await ref.read(groupsActionsProvider).joinOrRequest(widget.group);
-                  if (mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          widget.group.isRequestApprovalRequired
-                              ? 'Request sent! Waiting for organizer approval.'
-                              : 'You joined the group!',
-                        ),
+                  if (!mounted) return;
+                  messenger.showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        widget.group.isRequestApprovalRequired
+                            ? 'Request sent! Waiting for organizer approval.'
+                            : 'You joined the group!',
                       ),
-                    );
-                  }
+                    ),
+                  );
                 } catch (e) {
-                  if (mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Error: $e')),
-                    );
-                  }
+                  if (!mounted) return;
+                  messenger.showSnackBar(
+                    SnackBar(content: Text('Error: $e')),
+                  );
                 } finally {
                   if (mounted) setState(() => _isLoading = false);
                 }

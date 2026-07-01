@@ -116,7 +116,7 @@ class _NotificationTile extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: notification.isRead ? Theme.of(context).cardTheme.color : color.withOpacity(0.06),
+        color: notification.isRead ? Theme.of(context).cardTheme.color : color.withValues(alpha: 0.06),
         borderRadius: BorderRadius.circular(14),
         border: Border.all(color: Theme.of(context).dividerColor),
       ),
@@ -125,7 +125,7 @@ class _NotificationTile extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(color: color.withOpacity(0.12), shape: BoxShape.circle),
+            decoration: BoxDecoration(color: color.withValues(alpha: 0.12), shape: BoxShape.circle),
             child: Icon(_iconFor(notification.type), color: color, size: 20),
           ),
           const SizedBox(width: 12),

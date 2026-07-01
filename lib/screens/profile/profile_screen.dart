@@ -40,7 +40,7 @@ class ProfileScreen extends ConsumerWidget {
                         height: 88,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: AppColors.primary.withOpacity(0.15),
+                          color: AppColors.primary.withValues(alpha: 0.15),
                         ),
                         child: (user?.photoUrl != null && user!.photoUrl!.isNotEmpty)
                             ? ClipOval(child: AppNetworkImage(url: user.photoUrl!, width: 88, height: 88))
@@ -215,7 +215,7 @@ class _BadgeRow extends StatelessWidget {
                 width: 56,
                 height: 56,
                 decoration: BoxDecoration(
-                  color: unlocked ? AppColors.accent.withOpacity(0.15) : Theme.of(context).dividerColor.withOpacity(0.3),
+                  color: unlocked ? AppColors.accent.withValues(alpha: 0.15) : Theme.of(context).dividerColor.withValues(alpha: 0.3),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(icon, color: unlocked ? AppColors.accentDark : Theme.of(context).textTheme.bodySmall?.color, size: 26),
@@ -243,7 +243,7 @@ class _ProfileMenuTile extends StatelessWidget {
       contentPadding: const EdgeInsets.symmetric(horizontal: 4),
       leading: Container(
         padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(color: AppColors.primary.withOpacity(0.1), borderRadius: BorderRadius.circular(10)),
+        decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(10)),
         child: Icon(icon, color: AppColors.primary, size: 20),
       ),
       title: Text(label, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600)),

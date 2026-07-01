@@ -97,7 +97,7 @@ class CheckoutScreen extends ConsumerWidget {
             padding: const EdgeInsets.all(AppSpacing.screenPadding),
             decoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,
-              boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 12, offset: const Offset(0, -4))],
+              boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.06), blurRadius: 12, offset: const Offset(0, -4))],
             ),
             child: SafeArea(
               top: false,
@@ -172,7 +172,7 @@ class _PaymentMethodTile extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
-            color: isSelected ? _brandColor.withOpacity(0.08) : Theme.of(context).cardTheme.color,
+            color: isSelected ? _brandColor.withValues(alpha: 0.08) : Theme.of(context).cardTheme.color,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(color: isSelected ? _brandColor : Theme.of(context).dividerColor, width: isSelected ? 1.6 : 1),
           ),
@@ -181,7 +181,7 @@ class _PaymentMethodTile extends StatelessWidget {
               Container(
                 width: 44,
                 height: 44,
-                decoration: BoxDecoration(color: _brandColor.withOpacity(0.12), shape: BoxShape.circle),
+                decoration: BoxDecoration(color: _brandColor.withValues(alpha: 0.12), shape: BoxShape.circle),
                 child: Icon(_icon, color: _brandColor, size: 22),
               ),
               const SizedBox(width: 12),
@@ -214,7 +214,7 @@ class _AmountSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(color: AppColors.primary.withOpacity(0.08), borderRadius: BorderRadius.circular(16)),
+      decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: 0.08), borderRadius: BorderRadius.circular(16)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

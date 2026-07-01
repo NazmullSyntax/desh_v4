@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../domain/repositories/support_repository.dart';
@@ -24,7 +25,7 @@ class FirestoreSupportRepository implements SupportRepository {
     return _tickets.orderBy('createdAt', descending: true).snapshots().map(
       (snap) => snap.docs.map(_fromDoc).toList(),
     ).handleError((error) {
-      print('Error watching all tickets: $error');
+      debugPrint('Error watching all tickets: $error');
       return [];
     });
   }
@@ -41,7 +42,7 @@ class FirestoreSupportRepository implements SupportRepository {
     return _tickets.where('userId', isEqualTo: userId).orderBy('createdAt', descending: true).snapshots().map(
       (snap) => snap.docs.map(_fromDoc).toList(),
     ).handleError((error) {
-      print('Error watching user tickets: $error');
+      debugPrint('Error watching user tickets: $error');
       return [];
     });
   }

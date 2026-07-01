@@ -96,7 +96,7 @@ class DivisionCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   gradient: LinearGradient(
-                    colors: [Colors.black.withOpacity(0.55), Colors.transparent],
+                    colors: [Colors.black.withValues(alpha: 0.55), Colors.transparent],
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                   ),

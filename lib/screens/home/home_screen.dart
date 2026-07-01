@@ -89,7 +89,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             onTap: () => context.push(AppRoutes.safety),
                             child: Container(
                               padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(color: AppColors.error.withOpacity(0.12), shape: BoxShape.circle),
+                              decoration: BoxDecoration(color: AppColors.error.withValues(alpha: 0.12), shape: BoxShape.circle),
                               child: const Icon(Icons.sos_rounded, color: AppColors.error, size: 22),
                             ),
                           ),
@@ -101,9 +101,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       TextField(
                         controller: _searchController,
                         onChanged: (v) => ref.read(searchQueryProvider.notifier).state = v,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: 'Search destinations, hotels...',
-                          prefixIcon: const Icon(Icons.search, size: 22),
+                          prefixIcon: Icon(Icons.search, size: 22),
                           filled: true,
                         ),
                       ),
@@ -170,9 +170,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                 ),
               ),
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(AppSpacing.screenPadding, AppSpacing.sectionGap, AppSpacing.screenPadding, 0),
+                  padding: EdgeInsets.fromLTRB(AppSpacing.screenPadding, AppSpacing.sectionGap, AppSpacing.screenPadding, 0),
                   child: SectionHeader(title: 'Trending Places'),
                 ),
               ),
@@ -196,9 +196,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                 ),
               ),
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(AppSpacing.screenPadding, AppSpacing.sectionGap, AppSpacing.screenPadding, 0),
+                  padding: EdgeInsets.fromLTRB(AppSpacing.screenPadding, AppSpacing.sectionGap, AppSpacing.screenPadding, 0),
                   child: _TravelTipsCard(),
                 ),
               ),
@@ -219,9 +219,9 @@ class _TravelTipsCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: AppColors.accent.withOpacity(0.1),
+        color: AppColors.accent.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.accent.withOpacity(0.3)),
+        border: Border.all(color: AppColors.accent.withValues(alpha: 0.3)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

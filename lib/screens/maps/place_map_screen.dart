@@ -46,7 +46,7 @@ class PlaceMapScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,
-              boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 12, offset: const Offset(0, -4))],
+              boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.06), blurRadius: 12, offset: const Offset(0, -4))],
             ),
             child: SafeArea(
               top: false,
@@ -89,7 +89,7 @@ class PlaceMapScreen extends StatelessWidget {
                             Container(
                               width: 52,
                               height: 52,
-                              decoration: BoxDecoration(color: color.withOpacity(0.12), shape: BoxShape.circle),
+                              decoration: BoxDecoration(color: color.withValues(alpha: 0.12), shape: BoxShape.circle),
                               child: Icon(icon, color: color, size: 24),
                             ),
                             const SizedBox(height: 6),
@@ -117,7 +117,7 @@ class _MapPlaceholder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color: AppColors.primary.withOpacity(0.06),
+      color: AppColors.primary.withValues(alpha: 0.06),
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -150,7 +150,7 @@ class _GridPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = AppColors.primary.withOpacity(0.08)
+      ..color = AppColors.primary.withValues(alpha: 0.08)
       ..strokeWidth = 1;
     const gap = 32.0;
     for (double x = 0; x < size.width; x += gap) {

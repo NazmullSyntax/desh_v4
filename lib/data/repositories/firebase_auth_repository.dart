@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as fb;
+import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../../models/app_user_model.dart';
@@ -129,7 +130,7 @@ class FirebaseAuthRepository implements AuthRepository {
       await _googleSignIn.signOut();
     } catch (e) {
       // Google Sign-In may fail if not properly configured, but we should still sign out from Firebase
-      print('Warning: Google Sign-In signOut failed: $e');
+      debugPrint('Warning: Google Sign-In signOut failed: $e');
     }
     await _auth.signOut();
     _cachedUser = null;

@@ -136,19 +136,19 @@ class _PlaceDetailBody extends ConsumerWidget {
 
                   if (place.nearbyHotels.isNotEmpty) ...[
                     const SizedBox(height: 24),
-                    SectionHeader(title: 'Hotels Nearby'),
+                    const SectionHeader(title: 'Hotels Nearby'),
                     _NearbyRow(items: place.nearbyHotels),
                   ],
 
                   if (place.nearbyRestaurants.isNotEmpty) ...[
                     const SizedBox(height: 24),
-                    SectionHeader(title: 'Restaurants Nearby'),
+                    const SectionHeader(title: 'Restaurants Nearby'),
                     _NearbyRow(items: place.nearbyRestaurants),
                   ],
 
                   if (place.nearbyAttractions.isNotEmpty) ...[
                     const SizedBox(height: 24),
-                    SectionHeader(title: 'Nearby Attractions'),
+                    const SectionHeader(title: 'Nearby Attractions'),
                     _NearbyRow(items: place.nearbyAttractions),
                   ],
 
@@ -225,7 +225,7 @@ class _TravelersPlanningSection extends ConsumerWidget {
               const SizedBox(height: 4),
               Text(
                 'Join a group, meet fellow solo travelers, or start your own.',
-                style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 12.5),
+                style: TextStyle(color: Colors.white.withValues(alpha: 0.9), fontSize: 12.5),
               ),
               if (groups.isNotEmpty) ...[
                 const SizedBox(height: 14),
@@ -350,7 +350,7 @@ class _PhotoGalleryState extends State<_PhotoGallery> {
                 width: i == _index ? 18 : 6,
                 height: 6,
                 decoration: BoxDecoration(
-                  color: i == _index ? Colors.white : Colors.white.withOpacity(0.5),
+                  color: i == _index ? Colors.white : Colors.white.withValues(alpha: 0.5),
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
@@ -481,9 +481,9 @@ class _MapPreviewCard extends StatelessWidget {
       child: Container(
         height: 150,
         decoration: BoxDecoration(
-          color: AppColors.primary.withOpacity(0.08),
+          color: AppColors.primary.withValues(alpha: 0.08),
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppColors.primary.withOpacity(0.25)),
+          border: Border.all(color: AppColors.primary.withValues(alpha: 0.25)),
         ),
         child: Stack(
           alignment: Alignment.center,
@@ -561,9 +561,9 @@ class _EmergencyContactTile extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: AppColors.error.withOpacity(0.06),
+          color: AppColors.error.withValues(alpha: 0.06),
           borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: AppColors.error.withOpacity(0.2)),
+          border: Border.all(color: AppColors.error.withValues(alpha: 0.2)),
         ),
         child: Row(
           children: [
@@ -602,7 +602,7 @@ class _ReviewTile extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 20,
-            backgroundColor: AppColors.primary.withOpacity(0.15),
+            backgroundColor: AppColors.primary.withValues(alpha: 0.15),
             child: Text(review.userName.isNotEmpty ? review.userName[0] : '?', style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.w700)),
           ),
           const SizedBox(width: 12),

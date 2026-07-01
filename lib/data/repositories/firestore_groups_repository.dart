@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import '../../domain/repositories/groups_repository.dart';
 import '../../models/travel_group_model.dart';
 
@@ -36,7 +37,7 @@ class FirestoreGroupsRepository implements GroupsRepository {
       filtered.sort((a, b) => b.createdAt.compareTo(a.createdAt));
       return filtered;
     }).handleError((error) {
-      print('Error watching groups for place $placeId: $error');
+      debugPrint('Error watching groups for place $placeId: $error');
       return [];
     });
   }
@@ -58,22 +59,24 @@ class FirestoreGroupsRepository implements GroupsRepository {
     Stream<QuerySnapshot<Map<String, dynamic>>> stream2,
   ) {
     final controller = StreamController<List<TravelGroup>>.broadcast();
-    
-    var latestSnap1 = null;
-    var latestSnap2 = null;
-    
+
+    QuerySnapshot<Map<String, dynamic>>? latestSnap1;
+    QuerySnapshot<Map<String, dynamic>>? latestSnap2;
+
     void emitMerged() {
-      if (latestSnap1 != null && latestSnap2 != null) {
-        final byId = <String, TravelGroup>{};
-        for (final d in latestSnap1.docs) {
-          byId[d.id] = _fromDoc(d);
-        }
-        for (final d in latestSnap2.docs) {
-          byId[d.id] = _fromDoc(d);
-        }
-        final list = byId.values.toList()..sort((a, b) => b.createdAt.compareTo(a.createdAt));
-        controller.add(list);
+      final snap1 = latestSnap1;
+      final snap2 = latestSnap2;
+      if (snap1 == null || snap2 == null) return;
+
+      final byId = <String, TravelGroup>{};
+      for (final d in snap1.docs) {
+        byId[d.id] = _fromDoc(d);
       }
+      for (final d in snap2.docs) {
+        byId[d.id] = _fromDoc(d);
+      }
+      final list = byId.values.toList()..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+      controller.add(list);
     }
     
     final sub1 = stream1.listen(

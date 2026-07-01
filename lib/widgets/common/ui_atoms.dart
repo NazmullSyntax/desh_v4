@@ -13,7 +13,7 @@ class RatingBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: light ? Colors.black.withOpacity(0.45) : AppColors.accent.withOpacity(0.15),
+        color: light ? Colors.black.withValues(alpha: 0.45) : AppColors.accent.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(

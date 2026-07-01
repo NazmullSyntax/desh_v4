@@ -55,7 +55,7 @@ class _DivisionTile extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     gradient: LinearGradient(
-                      colors: [Colors.black.withOpacity(0.65), Colors.black.withOpacity(0.05)],
+                      colors: [Colors.black.withValues(alpha: 0.65), Colors.black.withValues(alpha: 0.05)],
                       begin: Alignment.bottomLeft,
                       end: Alignment.topRight,
                     ),
@@ -75,7 +75,7 @@ class _DivisionTile extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       '${division.districtIds.length} districts',
-                      style: TextStyle(color: Colors.white.withOpacity(0.85), fontSize: 13),
+                      style: TextStyle(color: Colors.white.withValues(alpha: 0.85), fontSize: 13),
                     ),
                   ],
                 ),
@@ -85,7 +85,7 @@ class _DivisionTile extends StatelessWidget {
                 right: 14,
                 child: Container(
                   padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(color: Colors.white.withOpacity(0.2), shape: BoxShape.circle),
+                  decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.2), shape: BoxShape.circle),
                   child: const Icon(Icons.arrow_forward_rounded, color: Colors.white, size: 18),
                 ),
               ),

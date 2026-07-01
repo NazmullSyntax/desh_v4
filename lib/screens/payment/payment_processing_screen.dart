@@ -121,7 +121,7 @@ class _SuccessView extends StatelessWidget {
         Container(
           width: 96,
           height: 96,
-          decoration: BoxDecoration(color: AppColors.success.withOpacity(0.12), shape: BoxShape.circle),
+          decoration: BoxDecoration(color: AppColors.success.withValues(alpha: 0.12), shape: BoxShape.circle),
           child: const Icon(Icons.check_circle, color: AppColors.success, size: 56),
         ),
         const SizedBox(height: 24),
@@ -142,7 +142,7 @@ class _SuccessView extends StatelessWidget {
           const SizedBox(height: 16),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            decoration: BoxDecoration(color: Theme.of(context).dividerColor.withOpacity(0.15), borderRadius: BorderRadius.circular(10)),
+            decoration: BoxDecoration(color: Theme.of(context).dividerColor.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(10)),
             child: Text('Transaction ID: $transactionId', style: Theme.of(context).textTheme.bodySmall),
           ),
         ],
@@ -177,7 +177,7 @@ class _FailedView extends StatelessWidget {
         Container(
           width: 96,
           height: 96,
-          decoration: BoxDecoration(color: AppColors.error.withOpacity(0.12), shape: BoxShape.circle),
+          decoration: BoxDecoration(color: AppColors.error.withValues(alpha: 0.12), shape: BoxShape.circle),
           child: const Icon(Icons.error_outline, color: AppColors.error, size: 56),
         ),
         const SizedBox(height: 24),

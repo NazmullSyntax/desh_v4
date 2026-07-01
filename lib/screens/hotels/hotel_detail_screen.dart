@@ -80,7 +80,7 @@ class HotelDetailScreen extends ConsumerWidget {
                   ],
                 ),
                 const SizedBox(height: 6),
-                Text('${_typeLabel} · ${hotel.reviewCount} reviews', style: Theme.of(context).textTheme.bodySmall),
+                Text('$_typeLabel · ${hotel.reviewCount} reviews', style: Theme.of(context).textTheme.bodySmall),
                 const SizedBox(height: 4),
                 Row(
                   children: [
@@ -116,7 +116,7 @@ class HotelDetailScreen extends ConsumerWidget {
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: AppColors.primary.withOpacity(0.08),
+                    color: AppColors.primary.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Row(
@@ -220,7 +220,7 @@ class _BookingDetailsSheetState extends State<_BookingDetailsSheet> {
             const SizedBox(height: 20),
             Container(
               padding: const EdgeInsets.all(14),
-              decoration: BoxDecoration(color: AppColors.primary.withOpacity(0.08), borderRadius: BorderRadius.circular(14)),
+              decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: 0.08), borderRadius: BorderRadius.circular(14)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

@@ -39,11 +39,11 @@ class AppTheme {
         titleTextStyle: AppTextStyles.h4Light,
         iconTheme: const IconThemeData(color: AppColors.textPrimaryLight),
       ),
-      cardTheme: CardThemeData(
+      cardTheme: const CardThemeData(
         color: AppColors.cardLight,
         elevation: 0,
-        shadowColor: const Color.fromRGBO(0, 0, 0, 0.08),
-        shape: const RoundedRectangleBorder(
+        shadowColor: Color.fromRGBO(0, 0, 0, 0.08),
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(radiusMedium)),
           side: BorderSide(color: AppColors.borderLight, width: 1),
         ),
@@ -96,7 +96,7 @@ class AppTheme {
         ),
         hintStyle: AppTextStyles.bodyLight.copyWith(color: AppColors.textSecondaryLight),
       ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: AppColors.surfaceLight,
         selectedItemColor: AppColors.primary,
         unselectedItemColor: AppColors.textSecondaryLight,
@@ -173,7 +173,7 @@ class AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: AppColors.primaryLight,
-          side: BorderSide(color: AppColors.primaryLight, width: 1.4),
+          side: const BorderSide(color: AppColors.primaryLight, width: 1.4),
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusMedium)),
         ),
@@ -191,11 +191,11 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radiusMedium),
-          borderSide: BorderSide(color: AppColors.primaryLight, width: 1.6),
+          borderSide: const BorderSide(color: AppColors.primaryLight, width: 1.6),
         ),
         hintStyle: AppTextStyles.bodyDark.copyWith(color: AppColors.textSecondaryDark),
       ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: AppColors.surfaceDark,
         selectedItemColor: AppColors.primaryLight,
         unselectedItemColor: AppColors.textSecondaryDark,

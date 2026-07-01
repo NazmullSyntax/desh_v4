@@ -121,7 +121,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                       height: 110,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        border: Border.all(color: AppColors.primary.withOpacity(0.3), width: 2),
+                        border: Border.all(color: AppColors.primary.withValues(alpha: 0.3), width: 2),
                       ),
                       child: ClipOval(
                         child: _pickedPhotoPath != null
@@ -129,7 +129,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                             : (user?.photoUrl != null && user!.photoUrl!.isNotEmpty)
                                 ? AppNetworkImage(url: user.photoUrl!, width: 110, height: 110)
                                 : Container(
-                                    color: AppColors.primary.withOpacity(0.12),
+                                    color: AppColors.primary.withValues(alpha: 0.12),
                                     alignment: Alignment.center,
                                     child: Text(
                                       (user?.displayName.isNotEmpty ?? false) ? user!.displayName[0].toUpperCase() : 'T',
@@ -163,9 +163,9 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                   padding: const EdgeInsets.all(12),
                   margin: const EdgeInsets.only(bottom: 20),
                   decoration: BoxDecoration(
-                    color: AppColors.accent.withOpacity(0.1),
+                    color: AppColors.accent.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: AppColors.accent.withOpacity(0.3)),
+                    border: Border.all(color: AppColors.accent.withValues(alpha: 0.3)),
                   ),
                   child: Row(
                     children: [
@@ -197,7 +197,7 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).dividerColor.withOpacity(0.15),
+                    color: Theme.of(context).dividerColor.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Row(

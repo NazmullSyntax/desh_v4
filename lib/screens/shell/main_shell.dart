@@ -46,7 +46,7 @@ class _MainShellState extends ConsumerState<MainShell> {
         selectedIndex: index,
         onDestinationSelected: (i) => ref.read(bottomNavIndexProvider.notifier).state = i,
         backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
-        indicatorColor: AppColors.primary.withOpacity(0.12),
+        indicatorColor: AppColors.primary.withValues(alpha: 0.12),
         destinations: const [
           NavigationDestination(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home_rounded), label: 'Home'),
           NavigationDestination(icon: Icon(Icons.map_outlined), selectedIcon: Icon(Icons.map_rounded), label: 'Guide'),

@@ -155,7 +155,7 @@ class _MemberTile extends StatelessWidget {
           if (isOwner)
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-              decoration: BoxDecoration(color: AppColors.accent.withOpacity(0.18), borderRadius: BorderRadius.circular(8)),
+              decoration: BoxDecoration(color: AppColors.accent.withValues(alpha: 0.18), borderRadius: BorderRadius.circular(8)),
               child: const Text('Organizer', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: AppColors.accentDark)),
             ),
         ],

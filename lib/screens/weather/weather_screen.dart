@@ -68,7 +68,7 @@ class _CurrentWeatherCard extends StatelessWidget {
           Icon(_weatherIcon(weather.icon), color: Colors.white, size: 64),
           const SizedBox(height: 8),
           Text('${weather.currentTempC.round()}°C', style: const TextStyle(color: Colors.white, fontSize: 44, fontWeight: FontWeight.w700)),
-          Text(weather.condition, style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 14)),
+          Text(weather.condition, style: TextStyle(color: Colors.white.withValues(alpha: 0.9), fontSize: 14)),
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -97,7 +97,7 @@ class _StatColumn extends StatelessWidget {
         Icon(icon, color: Colors.white, size: 20),
         const SizedBox(height: 4),
         Text(value, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 15)),
-        Text(label, style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 11)),
+        Text(label, style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 11)),
       ],
     );
   }

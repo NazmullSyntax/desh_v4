@@ -44,7 +44,7 @@ class SafetyScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(AppSpacing.screenPadding),
         children: [
-          _SosButton(),
+          const _SosButton(),
           const SizedBox(height: 28),
           Text('Emergency Contacts', style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 12),
@@ -53,20 +53,20 @@ class SafetyScreen extends StatelessWidget {
           const SizedBox(height: 24),
           Text("Women's Safety Tips", style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 12),
-          _TipsCard(tips: _womensSafetyTips, color: AppColors.secondary),
+          const _TipsCard(tips: _womensSafetyTips, color: AppColors.secondary),
 
           const SizedBox(height: 24),
           Text('Safety Guidelines', style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 12),
-          _TipsCard(tips: _safetyGuidelines, color: AppColors.primary),
+          const _TipsCard(tips: _safetyGuidelines, color: AppColors.primary),
 
           const SizedBox(height: 24),
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: AppColors.accent.withOpacity(0.1),
+              color: AppColors.accent.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: AppColors.accent.withOpacity(0.3)),
+              border: Border.all(color: AppColors.accent.withValues(alpha: 0.3)),
             ),
             child: Row(
               children: [
@@ -101,7 +101,7 @@ class _SosButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.error,
           borderRadius: BorderRadius.circular(24),
-          boxShadow: [BoxShadow(color: AppColors.error.withOpacity(0.4), blurRadius: 20, offset: const Offset(0, 8))],
+          boxShadow: [BoxShadow(color: AppColors.error.withValues(alpha: 0.4), blurRadius: 20, offset: const Offset(0, 8))],
         ),
         child: Column(
           children: [
@@ -109,7 +109,7 @@ class _SosButton extends StatelessWidget {
             const SizedBox(height: 8),
             const Text('SOS — Tap to Call 999', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 18)),
             const SizedBox(height: 4),
-            Text('Police · Fire · Ambulance', style: TextStyle(color: Colors.white.withOpacity(0.85), fontSize: 12)),
+            Text('Police · Fire · Ambulance', style: TextStyle(color: Colors.white.withValues(alpha: 0.85), fontSize: 12)),
           ],
         ),
       ),
@@ -135,7 +135,7 @@ class _ContactTile extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(color: AppColors.error.withOpacity(0.1), shape: BoxShape.circle),
+            decoration: BoxDecoration(color: AppColors.error.withValues(alpha: 0.1), shape: BoxShape.circle),
             child: Icon(entry.icon, color: AppColors.error, size: 20),
           ),
           const SizedBox(width: 12),

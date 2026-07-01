@@ -36,7 +36,7 @@ class WeatherCard extends ConsumerWidget {
         decoration: BoxDecoration(
           gradient: AppColors.skyGradient,
           borderRadius: BorderRadius.circular(22),
-          boxShadow: [BoxShadow(color: AppColors.secondary.withOpacity(0.3), blurRadius: 18, offset: const Offset(0, 8))],
+          boxShadow: [BoxShadow(color: AppColors.secondary.withValues(alpha: 0.3), blurRadius: 18, offset: const Offset(0, 8))],
         ),
         child: weatherAsync.when(
           loading: () => const SizedBox(height: 64, child: Center(child: CircularProgressIndicator(color: Colors.white))),
@@ -56,7 +56,7 @@ class WeatherCard extends ConsumerWidget {
                       ),
                       Text(
                         weather.condition,
-                        style: TextStyle(color: Colors.white.withOpacity(0.85), fontSize: 12),
+                        style: TextStyle(color: Colors.white.withValues(alpha: 0.85), fontSize: 12),
                       ),
                     ],
                   ),

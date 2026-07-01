@@ -85,7 +85,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> with SingleTickerPr
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(28),
-                    boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.15), blurRadius: 24, offset: const Offset(0, 8))],
+                    boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.15), blurRadius: 24, offset: const Offset(0, 8))],
                   ),
                   child: const Icon(Icons.travel_explore_rounded, size: 52, color: AppColors.primary),
                 ),
@@ -97,7 +97,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> with SingleTickerPr
                 const SizedBox(height: 6),
                 Text(
                   'Explore Bangladesh',
-                  style: TextStyle(color: Colors.white.withOpacity(0.85), fontSize: 14),
+                  style: TextStyle(color: Colors.white.withValues(alpha: 0.85), fontSize: 14),
                 ),
               ],
             ),

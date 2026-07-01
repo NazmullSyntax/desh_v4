@@ -39,7 +39,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 title: const Text('Dark Mode'),
                 subtitle: Text(themeMode == ThemeMode.system ? 'Following system setting' : (themeMode == ThemeMode.dark ? 'Enabled' : 'Disabled')),
                 value: themeMode == ThemeMode.dark,
-                activeColor: AppColors.primary,
+                activeThumbColor: AppColors.primary,
                 onChanged: (v) => ref.read(themeModeProvider.notifier).toggleDark(v),
               ),
               ListTile(
@@ -47,7 +47,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 title: const Text('Use System Theme'),
                 trailing: Switch(
                   value: themeMode == ThemeMode.system,
-                  activeColor: AppColors.primary,
+                  activeThumbColor: AppColors.primary,
                   onChanged: (v) => ref.read(themeModeProvider.notifier).setThemeMode(v ? ThemeMode.system : ThemeMode.light),
                 ),
               ),
@@ -176,7 +176,7 @@ class _ToggleRow extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       title: Text(label, style: Theme.of(context).textTheme.bodyMedium),
       value: value,
-      activeColor: AppColors.primary,
+      activeThumbColor: AppColors.primary,
       onChanged: onChanged,
     );
   }
@@ -198,13 +198,23 @@ class _LanguageSheet extends StatelessWidget {
           children: [
             Text('Select Language', style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 12),
-            ...languages.map((lang) => RadioListTile<String>(
-                  title: Text(lang),
-                  value: lang,
-                  groupValue: current,
-                  activeColor: AppColors.primary,
-                  onChanged: (v) => Navigator.of(context).pop(v),
-                )),
+            RadioGroup<String>(
+              groupValue: current,
+              onChanged: (value) {
+                if (value != null) Navigator.of(context).pop(value);
+              },
+              child: Column(
+                children: languages
+                    .map(
+                      (lang) => RadioListTile<String>(
+                        title: Text(lang),
+                        value: lang,
+                        activeColor: AppColors.primary,
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
           ],
         ),
       ),

@@ -64,7 +64,7 @@ class MockAuthRepository implements AuthRepository {
   @override
   Future<AppUser> signInWithGoogle() async {
     await Future.delayed(const Duration(milliseconds: 600));
-    final user = const AppUser(uid: 'google_mock_uid', email: 'demo@deshexplorer.app', name: 'Demo Traveler');
+    const user = AppUser(uid: 'google_mock_uid', email: 'demo@deshexplorer.app', name: 'Demo Traveler');
     _emit(user);
     return user;
   }
