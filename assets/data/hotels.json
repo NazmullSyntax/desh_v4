@@ -1,0 +1,163 @@
+[
+  {
+    "id": "h1",
+    "name": "Sayeman Beach Resort",
+    "type": "resort",
+    "imageUrls": [
+      "assets/images/hotels/sayeman_beach_resort.webp"
+    ],
+    "rating": 4.3,
+    "reviewCount": 1820,
+    "pricePerNight": 6500,
+    "districtId": "coxsbazar",
+    "address": "Kolatoli Road, Cox's Bazar",
+    "facilities": [
+      "Free WiFi",
+      "Swimming Pool",
+      "Sea View",
+      "Restaurant",
+      "Parking"
+    ],
+    "contactPhone": "0341-64091",
+    "latitude": 21.4112,
+    "longitude": 92.0089,
+    "isBookable": false
+  },
+  {
+    "id": "h2",
+    "name": "Royal Tulip Sea Pearl Beach Resort & Spa",
+    "type": "resort",
+    "imageUrls": [
+      "https://picsum.photos/seed/deshexplorer-hotelimg-h2/800/600"
+    ],
+    "rating": 4.5,
+    "reviewCount": 2240,
+    "pricePerNight": 12000,
+    "districtId": "coxsbazar",
+    "address": "Marine Drive Road, Cox's Bazar",
+    "facilities": [
+      "Spa",
+      "Private Beach Access",
+      "Swimming Pool",
+      "Free WiFi",
+      "Restaurant"
+    ],
+    "contactPhone": "0341-51234",
+    "latitude": 21.3756,
+    "longitude": 92.0245,
+    "isBookable": false
+  },
+  {
+    "id": "h3",
+    "name": "Grand Sylhet Hotel & Resort",
+    "type": "hotel",
+    "imageUrls": [
+      "https://picsum.photos/seed/deshexplorer-hotelimg-h3/800/600"
+    ],
+    "rating": 4.4,
+    "reviewCount": 980,
+    "pricePerNight": 7000,
+    "districtId": "sylhet_city",
+    "address": "Airport Road, Sylhet",
+    "facilities": [
+      "Rooftop Pool",
+      "Spa",
+      "Free WiFi",
+      "Restaurant",
+      "Gym"
+    ],
+    "contactPhone": "0821-718900",
+    "latitude": 24.8949,
+    "longitude": 91.8687,
+    "isBookable": false
+  },
+  {
+    "id": "h4",
+    "name": "Nisarg Eco Resort",
+    "type": "resort",
+    "imageUrls": [
+      "https://picsum.photos/seed/deshexplorer-hotelimg-h4/800/600"
+    ],
+    "rating": 4.1,
+    "reviewCount": 410,
+    "pricePerNight": 4500,
+    "districtId": "moulvibazar",
+    "address": "Near Lawachara, Sreemangal",
+    "facilities": [
+      "Garden View",
+      "Free WiFi",
+      "Restaurant",
+      "Nature Walks"
+    ],
+    "contactPhone": "08626-71234",
+    "latitude": 24.3201,
+    "longitude": 91.7402,
+    "isBookable": false
+  },
+  {
+    "id": "h5",
+    "name": "Nilgiri Hill Resort",
+    "type": "guestHouse",
+    "imageUrls": [
+      "https://picsum.photos/seed/deshexplorer-hotelimg-h5/800/600"
+    ],
+    "rating": 4.0,
+    "reviewCount": 260,
+    "pricePerNight": 3500,
+    "districtId": "bandarban",
+    "address": "Nilgiri, Bandarban",
+    "facilities": [
+      "Mountain View",
+      "Restaurant",
+      "Parking"
+    ],
+    "contactPhone": "0361-62345",
+    "latitude": 21.8167,
+    "longitude": 92.3667,
+    "isBookable": false
+  },
+  {
+    "id": "h6",
+    "name": "Sagorkonna Resort",
+    "type": "resort",
+    "imageUrls": [
+      "https://picsum.photos/seed/deshexplorer-hotelimg-h6/800/600"
+    ],
+    "rating": 4.0,
+    "reviewCount": 530,
+    "pricePerNight": 4000,
+    "districtId": "patuakhali",
+    "address": "West Beach Road, Kuakata",
+    "facilities": [
+      "Beachfront",
+      "Restaurant",
+      "Free WiFi"
+    ],
+    "contactPhone": "04428-56112",
+    "latitude": 21.8201,
+    "longitude": 90.1189,
+    "isBookable": false
+  },
+  {
+    "id": "h7",
+    "name": "Hotel Sand Beach",
+    "type": "hotel",
+    "imageUrls": [
+      "https://picsum.photos/seed/deshexplorer-hotelimg-h7/800/600"
+    ],
+    "rating": 3.9,
+    "reviewCount": 340,
+    "pricePerNight": 3000,
+    "districtId": "patuakhali",
+    "address": "Main Beach Road, Kuakata",
+    "facilities": [
+      "AC Rooms",
+      "Restaurant",
+      "Parking"
+    ],
+    "contactPhone": "04428-56078",
+    "latitude": 21.8189,
+    "longitude": 90.1156,
+    "isBookable": false
+  }
+]

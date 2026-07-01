@@ -1,0 +1,659 @@
+[
+  {
+    "id": "coxsbazar_beach",
+    "districtId": "coxsbazar",
+    "name": "Cox's Bazar Beach",
+    "banglaName": "কক্সবাজার সমুদ্র সৈকত",
+    "imageUrls": [
+      "assets/images/destinations/coxsbazar_beach.png"
+    ],
+    "shortDescription": "The world's longest unbroken natural sea beach, stretching roughly 120 km along the Bay of Bengal.",
+    "description": "Cox's Bazar is Bangladesh's most visited tourist town, built around a gently sloping sandy beach often cited as the longest natural sea beach in the world. Beyond the shoreline, the area offers parasailing, beach biking, a safari park, the country's only aquarium, and easy access to nearby islands and waterfalls.",
+    "history": "The town takes its name from Captain Hiram Cox, a British East India Company officer. It grew from a small fishing port into Bangladesh's leading beach resort over the 20th century.",
+    "bestTimeToVisit": "November to March (cool, dry season with clear skies)",
+    "entryFee": "Free beach access; nearby attractions (aquarium, viewpoints) charge BDT 1–10 for locals, more for foreigners",
+    "openingHours": "Open 24 hours (beach); most attractions 9:00 AM – 6:00 PM",
+    "travelTips": [
+      "Always negotiate prices with rickshaw and CNG drivers before the ride",
+      "Avoid swimming alone in unmarked areas — currents can be strong",
+      "Try the Marine Drive coastal road for sunset views",
+      "Carry cash; card payments are uncommon outside hotels"
+    ],
+    "distanceFromDhakaKm": 385,
+    "latitude": 21.4272,
+    "longitude": 92.0058,
+    "category": [
+      "beach",
+      "popular"
+    ],
+    "isPopular": true,
+    "isTrending": true,
+    "averageRating": 4.4,
+    "nearbyHotels": [
+      {
+        "id": "h1",
+        "name": "Sayeman Beach Resort",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-hotel-h1/300/300",
+        "distanceKm": 0.5,
+        "rating": 4.3
+      },
+      {
+        "id": "h2",
+        "name": "Royal Tulip Sea Pearl Resort & Spa",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-hotel-h2/300/300",
+        "distanceKm": 3.2,
+        "rating": 4.5
+      }
+    ],
+    "nearbyAttractions": [
+      {
+        "id": "a1",
+        "name": "Himchari National Park",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a1/300/300",
+        "distanceKm": 8
+      },
+      {
+        "id": "a2",
+        "name": "Inani Beach",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a2/300/300",
+        "distanceKm": 32
+      },
+      {
+        "id": "a3",
+        "name": "Maheshkhali Island",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a3/300/300",
+        "distanceKm": 14
+      }
+    ],
+    "emergencyContacts": [
+      {
+        "label": "Tourist Police Cox's Bazar",
+        "phoneNumber": "01320-110150"
+      },
+      {
+        "label": "Cox's Bazar Sadar Hospital",
+        "phoneNumber": "0341-62012"
+      }
+    ]
+  },
+  {
+    "id": "sundarbans",
+    "districtId": "bagerhat",
+    "name": "The Sundarbans",
+    "banglaName": "সুন্দরবন",
+    "imageUrls": [
+      "assets/images/destinations/sundarbans.jpg"
+    ],
+    "shortDescription": "The world's largest contiguous mangrove forest and the only mangrove ecosystem home to tigers, a UNESCO World Heritage Site.",
+    "description": "The Sundarbans spans the delta where the Ganges, Brahmaputra and Meghna rivers meet the Bay of Bengal. It is the last major stronghold of the Royal Bengal Tiger and home to spotted deer, saltwater crocodiles, Irrawaddy dolphins and over 250 bird species. Visits are almost entirely by boat, gliding through narrow tidal channels lined with dense mangrove.",
+    "history": "Designated a UNESCO World Heritage Site in 1997, the forest has been a protected reserve under the Bangladesh Forest Department since the colonial era, with sanctuaries established to safeguard the tiger population.",
+    "bestTimeToVisit": "October to March; the forest is closed to overnight boat trips from June to August during peak monsoon",
+    "entryFee": "Forest entry and boat permits are arranged through the Forest Department, typically bundled into tour packages (forest fee roughly BDT 1,000+ per group, plus armed guard fees)",
+    "openingHours": "Forest entry permitted 7:00 AM – 4:00 PM; overnight stays only aboard registered vessels",
+    "travelTips": [
+      "Book a registered tour operator — independent forest entry isn't permitted without a permit",
+      "A 3-day/2-night cruise from Khulna or Mongla is the most popular itinerary",
+      "Bring binoculars; tiger sightings are rare but birdlife is abundant",
+      "Network coverage is limited to Teletalk SIMs deep inside the forest"
+    ],
+    "distanceFromDhakaKm": 320,
+    "latitude": 22.1667,
+    "longitude": 89.4167,
+    "category": [
+      "wildlife",
+      "nature",
+      "unesco"
+    ],
+    "isPopular": true,
+    "isTrending": false,
+    "averageRating": 4.7,
+    "nearbyAttractions": [
+      {
+        "id": "a4",
+        "name": "Karamjal Eco-tourism Center",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a4/300/300",
+        "distanceKm": 4
+      },
+      {
+        "id": "a5",
+        "name": "Kotka Wildlife Sanctuary",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a5/300/300",
+        "distanceKm": 60
+      },
+      {
+        "id": "a6",
+        "name": "Hiron Point",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a6/300/300",
+        "distanceKm": 70
+      }
+    ],
+    "emergencyContacts": [
+      {
+        "label": "Divisional Forest Office, Khulna",
+        "phoneNumber": "041-720399"
+      },
+      {
+        "label": "Mongla Port Hospital",
+        "phoneNumber": "04662-75234"
+      }
+    ]
+  },
+  {
+    "id": "sreemangal_tea_gardens",
+    "districtId": "moulvibazar",
+    "name": "Sreemangal Tea Gardens",
+    "banglaName": "শ্রীমঙ্গল চা বাগান",
+    "imageUrls": [
+      "assets/images/destinations/sreemangal_tea_gardens.png"
+    ],
+    "shortDescription": "Bangladesh's 'Tea Capital' — rolling green tea estates, swamp forest, and the famous seven-layer tea.",
+    "description": "Sreemangal, in Moulvibazar district, sits at the heart of Bangladesh's tea industry, with the country's oldest tea estate (Malnichhera, est. 1854) nearby in Sylhet city and over 150 estates across the wider division. Visitors can walk through working plantations, watch traditional tea-plucking, and sample the region's signature seven-layer tea at local cabins. Nearby Lawachara National Park adds rainforest trekking and birdwatching to the experience.",
+    "history": "British planters began cultivating tea in the Sylhet region in the 19th century after recognizing the area's ideal soil and climate, founding an industry that still produces a significant share of the country's tea today.",
+    "bestTimeToVisit": "November to February for cool, clear weather; April–November for the most vivid green of the growing season",
+    "entryFee": "Most tea estates allow free roadside viewing; guided estate tours and the Tea Research Institute may charge a small fee",
+    "openingHours": "Daylight hours, roughly 8:00 AM – 5:00 PM",
+    "travelTips": [
+      "Take the train from Dhaka to Sreemangal for scenic views en route",
+      "Ask permission before photographing tea workers",
+      "Combine with a day trip to Lawachara National Park and Madhabkunda Waterfall",
+      "Some estate areas are restricted — go with a local guide for smooth access"
+    ],
+    "distanceFromDhakaKm": 200,
+    "latitude": 24.3065,
+    "longitude": 91.7296,
+    "category": [
+      "nature",
+      "tea",
+      "popular"
+    ],
+    "isPopular": true,
+    "isTrending": true,
+    "averageRating": 4.5,
+    "nearbyAttractions": [
+      {
+        "id": "a7",
+        "name": "Lawachara National Park",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a7/300/300",
+        "distanceKm": 8
+      },
+      {
+        "id": "a8",
+        "name": "Madhabkunda Waterfall",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a8/300/300",
+        "distanceKm": 65
+      },
+      {
+        "id": "a9",
+        "name": "Baikka Beel Wetland Sanctuary",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a9/300/300",
+        "distanceKm": 12
+      }
+    ],
+    "emergencyContacts": [
+      {
+        "label": "Sreemangal Upazila Health Complex",
+        "phoneNumber": "08626-71088"
+      }
+    ]
+  },
+  {
+    "id": "paharpur",
+    "districtId": "naogaon",
+    "name": "Paharpur Buddhist Vihara (Somapura Mahavihara)",
+    "banglaName": "পাহাড়পুর বৌদ্ধবিহার",
+    "imageUrls": [
+      "https://picsum.photos/seed/deshexplorer-place-paharpur-0/1000/700",
+      "https://picsum.photos/seed/deshexplorer-place-paharpur-1/1000/700"
+    ],
+    "shortDescription": "Ruins of the largest Buddhist monastery south of the Himalayas, a UNESCO World Heritage Site since 1985.",
+    "description": "Built by Pala emperor Dharmapala around the 8th century AD, Somapura Mahavihara was once a major center of Mahayana and Vajrayana Buddhist learning, connected to the famous monasteries of Nalanda and Vikramashila. The 8.5-hectare site holds 177 monastic cells around a massive cruciform central shrine whose stepped pyramid form influenced temple architecture as far away as Myanmar and Java.",
+    "history": "The monastery thrived for roughly four centuries before declining in the 12th century amid regional unrest. Rediscovered through 20th-century excavation, it was inscribed as a UNESCO World Heritage Site in 1985 alongside the Mosque City of Bagerhat.",
+    "bestTimeToVisit": "November to February (cool, dry weather for walking the exposed site)",
+    "entryFee": "Approximately BDT 20 for local visitors, BDT 200 for foreign visitors (site and museum)",
+    "openingHours": "9:00 AM – 5:00 PM, closed Sundays and government holidays; hours may shift during Ramadan",
+    "travelTips": [
+      "Allow 2–3 hours to see the ruins and the adjoining museum",
+      "Bring water and sun protection — the site is largely unshaded",
+      "Combine with a visit to Mahasthangarh, about 70 km away",
+      "Photography is generally allowed outdoors but restricted inside the museum"
+    ],
+    "distanceFromDhakaKm": 280,
+    "latitude": 25.0319,
+    "longitude": 88.9772,
+    "category": [
+      "heritage",
+      "unesco"
+    ],
+    "isPopular": false,
+    "isTrending": false,
+    "averageRating": 4.3,
+    "nearbyAttractions": [
+      {
+        "id": "a10",
+        "name": "Paharpur Museum",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a10/300/300",
+        "distanceKm": 0.2
+      },
+      {
+        "id": "a11",
+        "name": "Mahasthangarh",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a11/300/300",
+        "distanceKm": 70
+      }
+    ],
+    "emergencyContacts": [
+      {
+        "label": "Naogaon District Hospital",
+        "phoneNumber": "0741-61071"
+      }
+    ]
+  },
+  {
+    "id": "nilgiri_hills",
+    "districtId": "bandarban",
+    "name": "Nilgiri Hills",
+    "banglaName": "নীলগিরি",
+    "imageUrls": [
+      "assets/images/destinations/nilgiri_hills.png"
+    ],
+    "shortDescription": "One of the highest viewpoints reachable by road in Bangladesh, famous for sunrise views above a sea of clouds.",
+    "description": "Located in the Chittagong Hill Tracts about 46 km from Bandarban town, Nilgiri sits at roughly 2,000–2,500 feet elevation. The winding mountain road climbs through Mro tribal villages before reaching a viewpoint where clouds often drift below the lookout, especially just after sunrise. A government resort allows overnight stays for those who want the full cloud-sea experience.",
+    "history": "Nilgiri developed as a tourist viewpoint as road access into the Chittagong Hill Tracts improved through the late 20th century, and remains one of the region's signature attractions alongside Nilachal and Chimbuk Hill.",
+    "bestTimeToVisit": "October to March for the clearest skies and best 'sea of clouds' effect; arrive before 7 AM for sunrise",
+    "entryFee": "Approximately BDT 50–60 per person",
+    "openingHours": "Viewpoint accessible roughly 6:00 AM – 6:00 PM; overnight stays require advance resort booking",
+    "travelTips": [
+      "Foreign travelers need a permit, arranged through a registered tour operator",
+      "Open jeeps ('chander gari') are the most common way up from Bandarban town",
+      "Combine with Chimbuk Hill and Shoilo Propat waterfall on the same route",
+      "Independent trekking beyond the viewpoint is not recommended without a guide"
+    ],
+    "distanceFromDhakaKm": 330,
+    "latitude": 21.8167,
+    "longitude": 92.3667,
+    "category": [
+      "hill",
+      "nature"
+    ],
+    "isPopular": true,
+    "isTrending": true,
+    "averageRating": 4.6,
+    "nearbyAttractions": [
+      {
+        "id": "a12",
+        "name": "Nilachal Viewpoint",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a12/300/300",
+        "distanceKm": 42
+      },
+      {
+        "id": "a13",
+        "name": "Buddha Dhatu Jadi (Golden Temple)",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a13/300/300",
+        "distanceKm": 44
+      },
+      {
+        "id": "a14",
+        "name": "Chimbuk Hill",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a14/300/300",
+        "distanceKm": 20
+      }
+    ],
+    "emergencyContacts": [
+      {
+        "label": "Bandarban Sadar Hospital",
+        "phoneNumber": "0361-62041"
+      }
+    ]
+  },
+  {
+    "id": "shashi_lodge",
+    "districtId": "mymensingh_city",
+    "name": "Shashi Lodge (Mymensingh Rajbari)",
+    "banglaName": "শশী লজ",
+    "imageUrls": [
+      "https://picsum.photos/seed/deshexplorer-place-shashi_lodge-0/1000/700",
+      "https://picsum.photos/seed/deshexplorer-place-shashi_lodge-1/1000/700"
+    ],
+    "shortDescription": "A 19th-century zamindar palace blending European and Bengali architecture, now a heritage museum.",
+    "description": "Built by Maharaja Suryakanta Acharya Chowdhury and named for his adopted son Shashikanta, this palace once hosted lavish gatherings and theatrical performances for the Muktagacha zamindar family. Set on nine acres with a fountain garden, a marble bathing pavilion, and a museum of zamindari-era relics, it offers a glimpse into colonial-era Bengal aristocracy.",
+    "history": "Originally completed in 1877, the lodge was severely damaged in the 1897 earthquake and rebuilt between 1905 and 1911. After 1950 it served as a women's teacher-training college before the Department of Archaeology acquired and restored it in 2015.",
+    "bestTimeToVisit": "November to February",
+    "entryFee": "Nominal entry fee (a few BDT for locals; higher for foreign visitors)",
+    "openingHours": "9:00 AM – 6:30 PM, Sunday to Saturday",
+    "travelTips": [
+      "The adjoining Mymensingh Museum holds zamindar-era relics worth seeing in the same visit",
+      "Photography may be restricted in certain rooms — check on arrival",
+      "Easily reached by rickshaw or CNG from Mymensingh railway station"
+    ],
+    "distanceFromDhakaKm": 120,
+    "latitude": 24.7539,
+    "longitude": 90.4074,
+    "category": [
+      "heritage"
+    ],
+    "isPopular": false,
+    "isTrending": false,
+    "averageRating": 4.1,
+    "nearbyAttractions": [
+      {
+        "id": "a15",
+        "name": "Old Brahmaputra River",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a15/300/300",
+        "distanceKm": 0.5
+      },
+      {
+        "id": "a16",
+        "name": "Muktagacha Zamindar House",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a16/300/300",
+        "distanceKm": 17
+      }
+    ],
+    "emergencyContacts": [
+      {
+        "label": "Mymensingh General Hospital",
+        "phoneNumber": "091-66055"
+      }
+    ]
+  },
+  {
+    "id": "kuakata_beach",
+    "districtId": "patuakhali",
+    "name": "Kuakata Beach",
+    "banglaName": "কুয়াকাটা সমুদ্র সৈকত",
+    "imageUrls": [
+      "assets/images/destinations/kuakata_beach.png"
+    ],
+    "shortDescription": "The 'Daughter of the Sea' — a rare beach where both sunrise and sunset can be watched over open water.",
+    "description": "Kuakata's wide, gently sloping beach on Bangladesh's southernmost tip is known for offering unobstructed views of both sunrise and sunset from the same shoreline, an unusual feature among the country's beaches. Nearby attractions include Gangamati Char for sunrise, Red Crab Island, a Buddhist monastery at Misripara, and the settlement's Rakhine market reflecting the area's Arakanese heritage.",
+    "history": "Local tradition holds that Rakhine (Arakanese) settlers arrived from Myanmar around the 18th century after being displaced by Mughal rulers, founding the community that still shapes Kuakata's culture today.",
+    "bestTimeToVisit": "November to February for the most comfortable weather",
+    "entryFee": "Free beach access",
+    "openingHours": "Open 24 hours",
+    "travelTips": [
+      "Stay overnight to catch both the sunrise at Gangamati Char and sunset at the main beach",
+      "Hire a motorbike or rickshaw — it's the main way to get around Kuakata",
+      "Visit the Rakhine market for handicrafts and local textiles",
+      "The eastern stretch of beach (Gangamoti) tends to be quieter than the main beach"
+    ],
+    "distanceFromDhakaKm": 320,
+    "latitude": 21.8167,
+    "longitude": 90.1167,
+    "category": [
+      "beach",
+      "nature"
+    ],
+    "isPopular": true,
+    "isTrending": false,
+    "averageRating": 4.4,
+    "nearbyAttractions": [
+      {
+        "id": "a17",
+        "name": "Gangamati Char (Sunrise Point)",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a17/300/300",
+        "distanceKm": 2
+      },
+      {
+        "id": "a18",
+        "name": "Misripara Buddhist Monastery",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a18/300/300",
+        "distanceKm": 3
+      },
+      {
+        "id": "a19",
+        "name": "Fatrar Char Mangrove Forest",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a19/300/300",
+        "distanceKm": 5
+      }
+    ],
+    "emergencyContacts": [
+      {
+        "label": "Kalapara Upazila Health Complex",
+        "phoneNumber": "04428-56088"
+      }
+    ]
+  },
+  {
+    "id": "tajhat_palace",
+    "districtId": "rangpur_city",
+    "name": "Tajhat Palace",
+    "banglaName": "তাজহাট জমিদার বাড়ি",
+    "imageUrls": [
+      "https://picsum.photos/seed/deshexplorer-place-tajhat_palace-0/1000/700",
+      "https://picsum.photos/seed/deshexplorer-place-tajhat_palace-1/1000/700"
+    ],
+    "shortDescription": "A grand early-20th-century zamindar palace in Rangpur, now home to a regional archaeological museum.",
+    "description": "Tajhat Palace is a marble-floored zamindar mansion built in the early 1900s, recognizable for its domed entrance and sweeping front steps. The building now houses the Rangpur Museum, displaying coins, sculpture, and manuscripts from the region's history, while the surrounding gardens make it a popular spot for photography.",
+    "history": "Built by a Hindu zamindar family of Punjabi origin in the early 20th century, the palace later passed into government hands and was converted into a museum to preserve regional archaeological finds.",
+    "bestTimeToVisit": "November to February",
+    "entryFee": "Nominal museum entry fee",
+    "openingHours": "10:00 AM – 5:00 PM, closed Sundays and Mondays",
+    "travelTips": [
+      "Combine with a visit to Carmichael College, one of the oldest colleges in the region",
+      "Photography of the exterior and gardens is generally permitted",
+      "Easily reached by rickshaw from Rangpur city center"
+    ],
+    "distanceFromDhakaKm": 300,
+    "latitude": 25.7295,
+    "longitude": 89.252,
+    "category": [
+      "heritage"
+    ],
+    "isPopular": false,
+    "isTrending": false,
+    "averageRating": 4.2,
+    "nearbyAttractions": [
+      {
+        "id": "a20",
+        "name": "Carmichael College",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a20/300/300",
+        "distanceKm": 3
+      }
+    ],
+    "emergencyContacts": [
+      {
+        "label": "Rangpur Medical College Hospital",
+        "phoneNumber": "0521-62251"
+      }
+    ]
+  },
+  {
+    "id": "lalbagh_fort",
+    "districtId": "dhaka_city",
+    "name": "Lalbagh Fort",
+    "banglaName": "লালবাগ কেল্লা",
+    "imageUrls": [
+      "assets/images/destinations/lalbagh_fort.jpg"
+    ],
+    "shortDescription": "An unfinished 17th-century Mughal fort complex in the heart of Old Dhaka.",
+    "description": "Begun in 1678 by Prince Muhammad Azam, son of Emperor Aurangzeb, and never completed after the death of the governor's daughter Bibi Pari, Lalbagh Fort comprises a mosque, the Bibi Pari mausoleum, and the Hammam (bathhouse), now a museum of Mughal-era weapons, manuscripts, and artifacts.",
+    "history": "Construction was abandoned in 1684 after Subahdar Shaista Khan considered the site inauspicious following Bibi Pari's death. The fort later fell into disrepair before restoration by the Department of Archaeology.",
+    "bestTimeToVisit": "November to February",
+    "entryFee": "BDT 20 for locals, BDT 200 for foreign visitors",
+    "openingHours": "10:00 AM – 5:00 PM (varies seasonally), closed Sundays",
+    "travelTips": [
+      "Visit early morning to avoid crowds and Old Dhaka traffic",
+      "Combine with Ahsan Manzil and the Star Mosque on the same Old Dhaka day trip",
+      "Hire a rickshaw to navigate the narrow streets of the surrounding area"
+    ],
+    "distanceFromDhakaKm": 0,
+    "latitude": 23.7189,
+    "longitude": 90.3883,
+    "category": [
+      "heritage"
+    ],
+    "isPopular": true,
+    "isTrending": false,
+    "averageRating": 4.3,
+    "nearbyAttractions": [
+      {
+        "id": "a21",
+        "name": "Ahsan Manzil (Pink Palace)",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a21/300/300",
+        "distanceKm": 2
+      }
+    ],
+    "emergencyContacts": [
+      {
+        "label": "Dhaka Medical College Hospital",
+        "phoneNumber": "02-55165088"
+      }
+    ]
+  },
+  {
+    "id": "ahsan_manzil",
+    "districtId": "dhaka_city",
+    "name": "Ahsan Manzil (Pink Palace)",
+    "banglaName": "আহসান মঞ্জিল",
+    "imageUrls": [
+      "assets/images/destinations/ahsan_manzil.png"
+    ],
+    "shortDescription": "The pink-hued former residence of the Nawab of Dhaka, now a museum on the bank of the Buriganga River.",
+    "description": "Ahsan Manzil served as the residential palace and seat of the Dhaka Nawab family, overlooking the Buriganga River in Old Dhaka. Rebuilt in its current Indo-Saracenic style after an 1888 tornado damaged the original structure, the palace is named after Khwaja Abdul Ghani's son, Khwaja Ahsanullah. It was converted into a museum in 1992, with rooms displaying furniture, portraits, and household items from the Nawab era.",
+    "history": "Originally built around 1859 on the site of an old French trading post, the palace was damaged by a tornado in 1888 and substantially rebuilt. The Dhaka Nawab family used it as their primary residence until the abolition of the zamindari system in the 1950s; the government later restored it as a museum.",
+    "bestTimeToVisit": "November to February",
+    "entryFee": "BDT 20 for locals, BDT 100 for foreign visitors",
+    "openingHours": "10:30 AM – 5:30 PM (varies seasonally), closed Thursdays",
+    "travelTips": [
+      "Combine with a visit to nearby Lalbagh Fort on the same Old Dhaka day trip",
+      "Arrive early on weekends — the museum draws large crowds",
+      "A short boat ride on the adjacent Buriganga River is a popular add-on"
+    ],
+    "distanceFromDhakaKm": 0,
+    "latitude": 23.7086,
+    "longitude": 90.4057,
+    "category": [
+      "heritage"
+    ],
+    "isPopular": false,
+    "isTrending": false,
+    "averageRating": 4.2,
+    "nearbyAttractions": [
+      {
+        "id": "a22",
+        "name": "Lalbagh Fort",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a22/300/300",
+        "distanceKm": 2
+      },
+      {
+        "id": "a23",
+        "name": "Buriganga River Boat Ride",
+        "imageUrl": "https://picsum.photos/seed/deshexplorer-attraction-a23/300/300",
+        "distanceKm": 0.1
+      }
+    ],
+    "emergencyContacts": [
+      {
+        "label": "Dhaka Medical College Hospital",
+        "phoneNumber": "02-55165088"
+      }
+    ]
+  },
+  {
+    "id": "sajek_valley",
+    "districtId": "khagrachari",
+    "name": "Sajek Valley",
+    "banglaName": "সাজেক উপত্যকা",
+    "imageUrls": [
+      "assets/images/destinations/sajek_valley.png"
+    ],
+    "shortDescription": "A cloud-wrapped hill valley known as the “Queen of Hills,” reached via Khagrachhari.",
+    "description": "Sajek Valley sits roughly 1,800 feet above sea level in the Kasalong hill range of the Chittagong Hill Tracts. Though administratively part of Rangamati district, it is reached via Khagrachhari town. The valley is famous for its sea-of-clouds views at dawn, bamboo cottages with panoramic balconies, and villages of the Chakma, Marma, Tripura, Pankho and Lushai communities.",
+    "history": "Long one of the most remote parts of the Chittagong Hill Tracts, Sajek opened up to tourism in the early 2010s after the Bangladesh Army completed a decade-long road-building project connecting the valley to Khagrachhari.",
+    "bestTimeToVisit": "October to March (clearest skies and best chance of the sea-of-clouds views; September–March also recommended by most guides)",
+    "entryFee": "No entry fee; convoy registration at the Baghaihat army checkpoint is required for all visitors",
+    "openingHours": "Convoys into the valley depart Baghaihat checkpoint twice daily, around 10:30 AM and 3:30 PM",
+    "travelTips": [
+      "All vehicles travel in an army-escorted convoy from Baghaihat checkpoint — missing both daily windows means an overnight wait in Khagrachhari",
+      "Foreign nationals need advance permission from the Khagrachhari Deputy Commissioner's office; carry your passport/NID",
+      "Book a resort in advance, especially around Konglak Para and Ruilui Para for sunrise views",
+      "Pack warm clothing for chilly evenings and a power bank, since electricity is generator-based and limited"
+    ],
+    "distanceFromDhakaKm": 335,
+    "latitude": 23.3833,
+    "longitude": 92.2833,
+    "category": [
+      "hills",
+      "nature",
+      "popular"
+    ],
+    "isPopular": true,
+    "isTrending": true,
+    "averageRating": 4.6,
+    "nearbyHotels": [],
+    "nearbyAttractions": [
+      {
+        "id": "sa1",
+        "name": "Konglak Hill",
+        "imageUrl": "assets/images/destinations/sajek_valley.png",
+        "distanceKm": 7
+      },
+      {
+        "id": "sa2",
+        "name": "Ruilui Para",
+        "imageUrl": "assets/images/destinations/sajek_valley.png",
+        "distanceKm": 1
+      }
+    ],
+    "emergencyContacts": [
+      {
+        "label": "Baghaihat Army Checkpoint",
+        "phoneNumber": "N/A – register in person"
+      },
+      {
+        "label": "Khagrachhari Sadar Hospital",
+        "phoneNumber": "0371-61012"
+      }
+    ]
+  },
+  {
+    "id": "saint_martin_island",
+    "districtId": "coxsbazar",
+    "name": "Saint Martin's Island",
+    "banglaName": "সেন্ট মার্টিন দ্বীপ",
+    "imageUrls": [
+      "assets/images/destinations/saint_martin_island.png"
+    ],
+    "shortDescription": "Bangladesh's only coral island, about 9 km off the tip of the Teknaf peninsula in the Bay of Bengal.",
+    "description": "Saint Martin's Island is a small coral island covering about 3 square kilometres, forming the southernmost point of Bangladesh. Known locally as Narikel Jinjira (“Coconut Island”), it offers clear blue water, coral-fringed beaches, and a walkable coastline lined with coconut palms. A smaller tidal island, Chhera Dwip, sits nearby.",
+    "history": "The island's original name is believed to be Zinjira, given by Arab traders who used it as a resting point on the route between Chittagong and Southeast Asia. It was renamed after Saint Martin during the British colonial period.",
+    "bestTimeToVisit": "November to February, when the sea is calmest and passenger ships operate",
+    "entryFee": "No entry fee, but ship/travel-pass tickets must be booked in advance and daily visitor numbers are capped",
+    "openingHours": "Ships depart Cox's Bazar in the morning and return in the afternoon; the island is closed to tourists outside the approved season",
+    "travelTips": [
+      "All authorised passenger ships now depart from Cox's Bazar rather than Teknaf — double-check your ticket's departure point",
+      "Book ship tickets and the government travel pass well in advance, especially for December weekends",
+      "There are no cars on the island; walking or rented bicycles are the way to get around",
+      "Electricity is limited to generators/solar, so pack a power bank and expect basic connectivity"
+    ],
+    "distanceFromDhakaKm": 510,
+    "latitude": 20.6266,
+    "longitude": 92.3226,
+    "category": [
+      "beach",
+      "island",
+      "popular"
+    ],
+    "isPopular": true,
+    "isTrending": true,
+    "averageRating": 4.5,
+    "nearbyHotels": [],
+    "nearbyAttractions": [
+      {
+        "id": "sm1",
+        "name": "Chhera Dwip",
+        "imageUrl": "assets/images/destinations/saint_martin_island.png",
+        "distanceKm": 3
+      }
+    ],
+    "emergencyContacts": [
+      {
+        "label": "Saint Martin Island Health Complex",
+        "phoneNumber": "N/A – contact local resort staff"
+      },
+      {
+        "label": "Teknaf Coast Guard",
+        "phoneNumber": "01769-690101"
+      }
+    ]
+  }
+]

@@ -1,0 +1,27 @@
+// Example Firebase Storage Security Rules for DeshExplorer.
+//
+// Copy this into the Firebase Console (Storage > Rules). Matches the
+// folder structure used by FirebaseStorageRepository
+// (lib/data/repositories/firebase_storage_repository.dart):
+//
+//   profile_photos/{fileName}   -> uploaded via EditProfileScreen
+//
+// fileName is generated as "{uid}_{timestamp}.jpg" by AuthController, so
+// these rules check the filename PREFIX matches the requester's own uid
+// rather than relying on folder-per-user structure (kept flat and simple
+// since this app currently only stores profile photos here).
+
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    match /profile_photos/{fileName} {
+      allow read: if true; // profile photos are publicly viewable in-app
+      allow write: if request.auth != null
+                   && fileName.matches(request.auth.uid + '_.*');
+    }
+
+    // Everything else is closed by default.
+  }
+}

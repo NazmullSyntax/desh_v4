@@ -1,0 +1,664 @@
+[
+  {
+    "id": "dhaka_city",
+    "divisionId": "dhaka",
+    "name": "Dhaka",
+    "banglaName": "ঢাকা",
+    "description": "Dhaka district.",
+    "imageUrl": "assets/images/destinations/lalbagh_fort.jpg",
+    "touristPlaceIds": [
+      "lalbagh_fort",
+      "ahsan_manzil"
+    ],
+    "hasRichData": true
+  },
+  {
+    "id": "gazipur",
+    "divisionId": "dhaka",
+    "name": "Gazipur",
+    "banglaName": "গাজীপুর",
+    "description": "Gazipur district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-gazipur/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "narayanganj",
+    "divisionId": "dhaka",
+    "name": "Narayanganj",
+    "banglaName": "নারায়ণগঞ্জ",
+    "description": "Narayanganj district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-narayanganj/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "tangail",
+    "divisionId": "dhaka",
+    "name": "Tangail",
+    "banglaName": "টাঙ্গাইল",
+    "description": "Tangail district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-tangail/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "faridpur",
+    "divisionId": "dhaka",
+    "name": "Faridpur",
+    "banglaName": "ফরিদপুর",
+    "description": "Faridpur district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-faridpur/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "gopalganj",
+    "divisionId": "dhaka",
+    "name": "Gopalganj",
+    "banglaName": "গোপালগঞ্জ",
+    "description": "Gopalganj district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-gopalganj/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "madaripur",
+    "divisionId": "dhaka",
+    "name": "Madaripur",
+    "banglaName": "মাদারীপুর",
+    "description": "Madaripur district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-madaripur/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "manikganj",
+    "divisionId": "dhaka",
+    "name": "Manikganj",
+    "banglaName": "মানিকগঞ্জ",
+    "description": "Manikganj district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-manikganj/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "munshiganj",
+    "divisionId": "dhaka",
+    "name": "Munshiganj",
+    "banglaName": "মুন্সিগঞ্জ",
+    "description": "Munshiganj district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-munshiganj/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "rajbari",
+    "divisionId": "dhaka",
+    "name": "Rajbari",
+    "banglaName": "রাজবাড়ী",
+    "description": "Rajbari district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-rajbari/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "shariatpur",
+    "divisionId": "dhaka",
+    "name": "Shariatpur",
+    "banglaName": "শরীয়তপুর",
+    "description": "Shariatpur district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-shariatpur/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "kishoreganj",
+    "divisionId": "dhaka",
+    "name": "Kishoreganj",
+    "banglaName": "কিশোরগঞ্জ",
+    "description": "Kishoreganj district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-kishoreganj/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "narsingdi",
+    "divisionId": "dhaka",
+    "name": "Narsingdi",
+    "banglaName": "নরসিংদী",
+    "description": "Narsingdi district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-narsingdi/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "coxsbazar",
+    "divisionId": "chittagong",
+    "name": "Cox's Bazar",
+    "banglaName": "কক্সবাজার",
+    "description": "Cox's Bazar district.",
+    "imageUrl": "assets/images/destinations/coxsbazar_beach.png",
+    "touristPlaceIds": [
+      "coxsbazar_beach",
+      "saint_martin_island"
+    ],
+    "hasRichData": true
+  },
+  {
+    "id": "bandarban",
+    "divisionId": "chittagong",
+    "name": "Bandarban",
+    "banglaName": "বান্দরবান",
+    "description": "Bandarban district.",
+    "imageUrl": "assets/images/destinations/bandarban_district.jpg",
+    "touristPlaceIds": [
+      "nilgiri_hills"
+    ],
+    "hasRichData": true
+  },
+  {
+    "id": "rangamati",
+    "divisionId": "chittagong",
+    "name": "Rangamati",
+    "banglaName": "রাঙ্গামাটি",
+    "description": "Rangamati district.",
+    "imageUrl": "assets/images/destinations/rangamati_district.webp",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "chittagong_city",
+    "divisionId": "chittagong",
+    "name": "Chittagong",
+    "banglaName": "চট্টগ্রাম",
+    "description": "Chittagong district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-chittagong_city/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "khagrachari",
+    "divisionId": "chittagong",
+    "name": "Khagrachari",
+    "banglaName": "খাগড়াছড়ি",
+    "description": "Khagrachari district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-khagrachari/600/600",
+    "touristPlaceIds": [
+      "sajek_valley"
+    ],
+    "hasRichData": false
+  },
+  {
+    "id": "cumilla",
+    "divisionId": "chittagong",
+    "name": "Cumilla",
+    "banglaName": "কুমিল্লা",
+    "description": "Cumilla district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-cumilla/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "feni",
+    "divisionId": "chittagong",
+    "name": "Feni",
+    "banglaName": "ফেনী",
+    "description": "Feni district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-feni/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "brahmanbaria",
+    "divisionId": "chittagong",
+    "name": "Brahmanbaria",
+    "banglaName": "ব্রাহ্মণবাড়িয়া",
+    "description": "Brahmanbaria district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-brahmanbaria/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "chandpur",
+    "divisionId": "chittagong",
+    "name": "Chandpur",
+    "banglaName": "চাঁদপুর",
+    "description": "Chandpur district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-chandpur/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "lakshmipur",
+    "divisionId": "chittagong",
+    "name": "Lakshmipur",
+    "banglaName": "লক্ষ্মীপুর",
+    "description": "Lakshmipur district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-lakshmipur/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "noakhali",
+    "divisionId": "chittagong",
+    "name": "Noakhali",
+    "banglaName": "নোয়াখালী",
+    "description": "Noakhali district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-noakhali/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "khulna_city",
+    "divisionId": "khulna",
+    "name": "Khulna",
+    "banglaName": "খুলনা",
+    "description": "Khulna district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-khulna_city/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "bagerhat",
+    "divisionId": "khulna",
+    "name": "Bagerhat",
+    "banglaName": "বাগেরহাট",
+    "description": "Bagerhat district.",
+    "imageUrl": "assets/images/destinations/sundarbans.jpg",
+    "touristPlaceIds": [
+      "sundarbans"
+    ],
+    "hasRichData": true
+  },
+  {
+    "id": "satkhira",
+    "divisionId": "khulna",
+    "name": "Satkhira",
+    "banglaName": "সাতক্ষীরা",
+    "description": "Satkhira district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-satkhira/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "jessore",
+    "divisionId": "khulna",
+    "name": "Jessore",
+    "banglaName": "যশোর",
+    "description": "Jessore district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-jessore/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "jhenaidah",
+    "divisionId": "khulna",
+    "name": "Jhenaidah",
+    "banglaName": "ঝিনাইদহ",
+    "description": "Jhenaidah district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-jhenaidah/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "magura",
+    "divisionId": "khulna",
+    "name": "Magura",
+    "banglaName": "মাগুরা",
+    "description": "Magura district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-magura/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "narail",
+    "divisionId": "khulna",
+    "name": "Narail",
+    "banglaName": "নড়াইল",
+    "description": "Narail district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-narail/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "kushtia",
+    "divisionId": "khulna",
+    "name": "Kushtia",
+    "banglaName": "কুষ্টিয়া",
+    "description": "Kushtia district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-kushtia/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "chuadanga",
+    "divisionId": "khulna",
+    "name": "Chuadanga",
+    "banglaName": "চুয়াডাঙ্গা",
+    "description": "Chuadanga district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-chuadanga/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "meherpur",
+    "divisionId": "khulna",
+    "name": "Meherpur",
+    "banglaName": "মেহেরপুর",
+    "description": "Meherpur district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-meherpur/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "sylhet_city",
+    "divisionId": "sylhet",
+    "name": "Sylhet",
+    "banglaName": "সিলেট",
+    "description": "Sylhet district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-sylhet_city/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "moulvibazar",
+    "divisionId": "sylhet",
+    "name": "Moulvibazar",
+    "banglaName": "মৌলভীবাজার",
+    "description": "Moulvibazar district.",
+    "imageUrl": "assets/images/destinations/sreemangal_tea_gardens.png",
+    "touristPlaceIds": [
+      "sreemangal_tea_gardens"
+    ],
+    "hasRichData": true
+  },
+  {
+    "id": "habiganj",
+    "divisionId": "sylhet",
+    "name": "Habiganj",
+    "banglaName": "হবিগঞ্জ",
+    "description": "Habiganj district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-habiganj/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "sunamganj",
+    "divisionId": "sylhet",
+    "name": "Sunamganj",
+    "banglaName": "সুনামগঞ্জ",
+    "description": "Sunamganj district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-sunamganj/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "naogaon",
+    "divisionId": "rajshahi",
+    "name": "Naogaon",
+    "banglaName": "নওগাঁ",
+    "description": "Naogaon district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-naogaon/600/600",
+    "touristPlaceIds": [
+      "paharpur"
+    ],
+    "hasRichData": true
+  },
+  {
+    "id": "bogura",
+    "divisionId": "rajshahi",
+    "name": "Bogura",
+    "banglaName": "বগুড়া",
+    "description": "Bogura district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-bogura/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "rajshahi_city",
+    "divisionId": "rajshahi",
+    "name": "Rajshahi",
+    "banglaName": "রাজশাহী",
+    "description": "Rajshahi district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-rajshahi_city/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "natore",
+    "divisionId": "rajshahi",
+    "name": "Natore",
+    "banglaName": "নাটোর",
+    "description": "Natore district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-natore/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "chapainawabganj",
+    "divisionId": "rajshahi",
+    "name": "Chapainawabganj",
+    "banglaName": "চাঁপাইনবাবগঞ্জ",
+    "description": "Chapainawabganj district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-chapainawabganj/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "pabna",
+    "divisionId": "rajshahi",
+    "name": "Pabna",
+    "banglaName": "পাবনা",
+    "description": "Pabna district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-pabna/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "sirajganj",
+    "divisionId": "rajshahi",
+    "name": "Sirajganj",
+    "banglaName": "সিরাজগঞ্জ",
+    "description": "Sirajganj district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-sirajganj/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "joypurhat",
+    "divisionId": "rajshahi",
+    "name": "Joypurhat",
+    "banglaName": "জয়পুরহাট",
+    "description": "Joypurhat district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-joypurhat/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "patuakhali",
+    "divisionId": "barisal",
+    "name": "Patuakhali",
+    "banglaName": "পটুয়াখালী",
+    "description": "Patuakhali district.",
+    "imageUrl": "assets/images/destinations/kuakata_beach.png",
+    "touristPlaceIds": [
+      "kuakata_beach"
+    ],
+    "hasRichData": true
+  },
+  {
+    "id": "barisal_city",
+    "divisionId": "barisal",
+    "name": "Barisal",
+    "banglaName": "বরিশাল",
+    "description": "Barisal district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-barisal_city/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "jhalokati",
+    "divisionId": "barisal",
+    "name": "Jhalokati",
+    "banglaName": "ঝালকাঠি",
+    "description": "Jhalokati district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-jhalokati/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "pirojpur",
+    "divisionId": "barisal",
+    "name": "Pirojpur",
+    "banglaName": "পিরোজপুর",
+    "description": "Pirojpur district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-pirojpur/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "barguna",
+    "divisionId": "barisal",
+    "name": "Barguna",
+    "banglaName": "বরগুনা",
+    "description": "Barguna district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-barguna/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "bhola",
+    "divisionId": "barisal",
+    "name": "Bhola",
+    "banglaName": "ভোলা",
+    "description": "Bhola district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-bhola/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "rangpur_city",
+    "divisionId": "rangpur",
+    "name": "Rangpur",
+    "banglaName": "রংপুর",
+    "description": "Rangpur district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-rangpur_city/600/600",
+    "touristPlaceIds": [
+      "tajhat_palace"
+    ],
+    "hasRichData": true
+  },
+  {
+    "id": "dinajpur",
+    "divisionId": "rangpur",
+    "name": "Dinajpur",
+    "banglaName": "দিনাজপুর",
+    "description": "Dinajpur district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-dinajpur/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "panchagarh",
+    "divisionId": "rangpur",
+    "name": "Panchagarh",
+    "banglaName": "পঞ্চগড়",
+    "description": "Panchagarh district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-panchagarh/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "kurigram",
+    "divisionId": "rangpur",
+    "name": "Kurigram",
+    "banglaName": "কুড়িগ্রাম",
+    "description": "Kurigram district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-kurigram/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "gaibandha",
+    "divisionId": "rangpur",
+    "name": "Gaibandha",
+    "banglaName": "গাইবান্ধা",
+    "description": "Gaibandha district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-gaibandha/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "lalmonirhat",
+    "divisionId": "rangpur",
+    "name": "Lalmonirhat",
+    "banglaName": "লালমনিরহাট",
+    "description": "Lalmonirhat district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-lalmonirhat/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "nilphamari",
+    "divisionId": "rangpur",
+    "name": "Nilphamari",
+    "banglaName": "নীলফামারী",
+    "description": "Nilphamari district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-nilphamari/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "thakurgaon",
+    "divisionId": "rangpur",
+    "name": "Thakurgaon",
+    "banglaName": "ঠাকুরগাঁও",
+    "description": "Thakurgaon district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-thakurgaon/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "mymensingh_city",
+    "divisionId": "mymensingh",
+    "name": "Mymensingh",
+    "banglaName": "ময়মনসিংহ",
+    "description": "Mymensingh district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-mymensingh_city/600/600",
+    "touristPlaceIds": [
+      "shashi_lodge"
+    ],
+    "hasRichData": true
+  },
+  {
+    "id": "jamalpur",
+    "divisionId": "mymensingh",
+    "name": "Jamalpur",
+    "banglaName": "জামালপুর",
+    "description": "Jamalpur district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-jamalpur/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "netrokona",
+    "divisionId": "mymensingh",
+    "name": "Netrokona",
+    "banglaName": "নেত্রকোণা",
+    "description": "Netrokona district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-netrokona/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  },
+  {
+    "id": "sherpur",
+    "divisionId": "mymensingh",
+    "name": "Sherpur",
+    "banglaName": "শেরপুর",
+    "description": "Sherpur district.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-district-sherpur/600/600",
+    "touristPlaceIds": [],
+    "hasRichData": false
+  }
+]

@@ -1,0 +1,138 @@
+[
+  {
+    "id": "dhaka",
+    "name": "Dhaka",
+    "banglaName": "ঢাকা",
+    "description": "The capital division — Bangladesh's political and economic heart, home to Old Dhaka's Mughal heritage and the country's busiest international gateway.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-division-dhaka/800/500",
+    "districtIds": [
+      "dhaka_city",
+      "gazipur",
+      "narayanganj",
+      "tangail",
+      "faridpur",
+      "gopalganj",
+      "madaripur",
+      "manikganj",
+      "munshiganj",
+      "rajbari",
+      "shariatpur",
+      "kishoreganj",
+      "narsingdi"
+    ]
+  },
+  {
+    "id": "chittagong",
+    "name": "Chittagong",
+    "banglaName": "চট্টগ্রাম",
+    "description": "Home to the world's longest natural sea beach, the misty Chittagong Hill Tracts, and Bangladesh's main seaport.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-division-chittagong/800/500",
+    "districtIds": [
+      "coxsbazar",
+      "bandarban",
+      "rangamati",
+      "chittagong_city",
+      "khagrachari",
+      "cumilla",
+      "feni",
+      "brahmanbaria",
+      "chandpur",
+      "lakshmipur",
+      "noakhali"
+    ]
+  },
+  {
+    "id": "khulna",
+    "name": "Khulna",
+    "banglaName": "খুলনা",
+    "description": "Gateway to the Sundarbans, the world's largest mangrove forest and home of the Royal Bengal Tiger.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-division-khulna/800/500",
+    "districtIds": [
+      "khulna_city",
+      "bagerhat",
+      "satkhira",
+      "jessore",
+      "jhenaidah",
+      "magura",
+      "narail",
+      "kushtia",
+      "chuadanga",
+      "meherpur"
+    ]
+  },
+  {
+    "id": "sylhet",
+    "name": "Sylhet",
+    "banglaName": "সিলেট",
+    "description": "Rolling tea gardens, swamp forests and waterfalls in Bangladesh's lush northeast.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-division-sylhet/800/500",
+    "districtIds": [
+      "sylhet_city",
+      "moulvibazar",
+      "habiganj",
+      "sunamganj"
+    ]
+  },
+  {
+    "id": "rajshahi",
+    "name": "Rajshahi",
+    "banglaName": "রাজশাহী",
+    "description": "Ancient Buddhist ruins, mango orchards and the silk-weaving heartland of northwestern Bangladesh.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-division-rajshahi/800/500",
+    "districtIds": [
+      "naogaon",
+      "bogura",
+      "rajshahi_city",
+      "natore",
+      "chapainawabganj",
+      "pabna",
+      "sirajganj",
+      "joypurhat"
+    ]
+  },
+  {
+    "id": "barisal",
+    "name": "Barisal",
+    "banglaName": "বরিশাল",
+    "description": "Known as the 'Venice of Bengal' — a maze of rivers, floating markets and Bangladesh's only beach to offer both sunrise and sunset.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-division-barisal/800/500",
+    "districtIds": [
+      "patuakhali",
+      "barisal_city",
+      "jhalokati",
+      "pirojpur",
+      "barguna",
+      "bhola"
+    ]
+  },
+  {
+    "id": "rangpur",
+    "name": "Rangpur",
+    "banglaName": "রংপুর",
+    "description": "Northern plains famous for the Tajhat Palace and a gateway to Bangladesh's tea-growing far north.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-division-rangpur/800/500",
+    "districtIds": [
+      "rangpur_city",
+      "dinajpur",
+      "panchagarh",
+      "kurigram",
+      "gaibandha",
+      "lalmonirhat",
+      "nilphamari",
+      "thakurgaon"
+    ]
+  },
+  {
+    "id": "mymensingh",
+    "name": "Mymensingh",
+    "banglaName": "ময়মনসিংহ",
+    "description": "Zamindar palaces along the old Brahmaputra River and the green foothills of the Garo Hills.",
+    "imageUrl": "https://picsum.photos/seed/deshexplorer-division-mymensingh/800/500",
+    "districtIds": [
+      "mymensingh_city",
+      "jamalpur",
+      "netrokona",
+      "sherpur"
+    ]
+  }
+]
