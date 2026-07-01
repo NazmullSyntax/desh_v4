@@ -9,6 +9,7 @@ import '../../providers/guide_provider.dart';
 import '../../providers/trip_planner_provider.dart';
 import '../../widgets/common/primary_button.dart';
 import '../../widgets/common/ui_atoms.dart';
+import '../support/live_chat_screen.dart';
 import 'trip_result_screen.dart';
 
 /// Trip Planner module: lets the user pick a destination, dates, budget,
@@ -392,7 +393,24 @@ class _SavedTripTile extends StatelessWidget {
                   ],
                 ),
               ),
-              Text(formatBDT(trip.estimate.total), style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w700, color: AppColors.primary)),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(formatBDT(trip.estimate.total), style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w700, color: AppColors.primary)),
+                  const SizedBox(height: 6),
+                  IconButton(
+                    tooltip: 'Live Chat',
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => LiveChatScreen(destinationName: trip.destinationName, tripId: trip.id),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.support_agent_outlined, size: 18),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

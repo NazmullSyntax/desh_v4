@@ -7,6 +7,7 @@ import '../../models/booking_model.dart';
 import '../../models/trip_plan_model.dart';
 import '../../widgets/common/primary_button.dart';
 import '../payment/checkout_screen.dart';
+import '../support/live_chat_screen.dart';
 
 IconData _iconForKey(String key) {
   switch (key) {
@@ -104,6 +105,18 @@ class TripResultScreen extends StatelessWidget {
             'Books transport + estimated costs for this trip as a single reservation.',
             style: Theme.of(context).textTheme.bodySmall,
             textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 12),
+          OutlinedButton.icon(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => LiveChatScreen(destinationName: plan.destinationName, tripId: plan.id),
+                ),
+              );
+            },
+            icon: const Icon(Icons.support_agent_outlined),
+            label: const Text('Live Chat'),
           ),
 
           const SizedBox(height: 80),
