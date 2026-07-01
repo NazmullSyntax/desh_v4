@@ -63,5 +63,5 @@ class AppColors {
 
   /// Glassmorphism overlay tint used on top of imagery (cards, headers).
   static Color glass({bool dark = false}) =>
-      (dark ? Colors.black : Colors.white).withOpacity(0.12);
+      dark ? const Color.fromRGBO(0, 0, 0, 0.12) : const Color.fromRGBO(255, 255, 255, 0.12);
 }

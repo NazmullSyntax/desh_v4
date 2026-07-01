@@ -42,9 +42,9 @@ class AppTheme {
       cardTheme: CardThemeData(
         color: AppColors.cardLight,
         elevation: 0,
-        shadowColor: Colors.black.withOpacity(0.08),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radiusMedium),
+        shadowColor: const Color.fromRGBO(0, 0, 0, 0.08),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(radiusMedium)),
           side: BorderSide(color: AppColors.borderLight, width: 1),
         ),
         margin: EdgeInsets.zero,
@@ -106,10 +106,10 @@ class AppTheme {
       ),
       chipTheme: ChipThemeData(
         backgroundColor: AppColors.surfaceLight,
-        selectedColor: AppColors.primary.withOpacity(0.12),
+        selectedColor: const Color(0x1F0F9D58),
         labelStyle: AppTextStyles.bodySmallLight,
         side: const BorderSide(color: AppColors.borderLight),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusSmall + 6)),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(radiusSmall + 6))),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       ),
       dividerTheme: const DividerThemeData(color: AppColors.borderLight, thickness: 1),
@@ -151,11 +151,11 @@ class AppTheme {
         titleTextStyle: AppTextStyles.h4Dark,
         iconTheme: const IconThemeData(color: AppColors.textPrimaryDark),
       ),
-      cardTheme: CardThemeData(
+      cardTheme: const CardThemeData(
         color: AppColors.cardDark,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radiusMedium),
+          borderRadius: BorderRadius.all(Radius.circular(radiusMedium)),
           side: BorderSide(color: AppColors.borderDark, width: 1),
         ),
         margin: EdgeInsets.zero,
@@ -205,10 +205,10 @@ class AppTheme {
       ),
       chipTheme: ChipThemeData(
         backgroundColor: AppColors.surfaceDark,
-        selectedColor: AppColors.primaryLight.withOpacity(0.18),
+        selectedColor: const Color(0x2E4CBB7D),
         labelStyle: AppTextStyles.bodySmallDark,
-        side: BorderSide(color: AppColors.borderDark),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusSmall + 6)),
+        side: const BorderSide(color: AppColors.borderDark),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(radiusSmall + 6))),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       ),
       dividerTheme: const DividerThemeData(color: AppColors.borderDark, thickness: 1),

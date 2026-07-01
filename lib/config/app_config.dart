@@ -8,7 +8,7 @@
 class AppConfig {
   AppConfig._();
 
-  static const bool useFirebase = false;
+  static const bool useFirebase = true;
 
   /// Google Maps API key is read from platform manifests
   /// (AndroidManifest.xml / AppDelegate.swift / Info.plist), not from Dart

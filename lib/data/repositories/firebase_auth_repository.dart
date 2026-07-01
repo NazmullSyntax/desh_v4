@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as fb;
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../domain/repositories/auth_repository.dart';
@@ -12,10 +13,12 @@ import '../../models/app_user_model.dart';
 class FirebaseAuthRepository implements AuthRepository {
   final fb.FirebaseAuth _auth;
   final GoogleSignIn _googleSignIn;
+  final FirebaseFirestore _firestore;
 
-  FirebaseAuthRepository({fb.FirebaseAuth? auth, GoogleSignIn? googleSignIn})
+  FirebaseAuthRepository({fb.FirebaseAuth? auth, GoogleSignIn? googleSignIn, FirebaseFirestore? firestore})
       : _auth = auth ?? fb.FirebaseAuth.instance,
-        _googleSignIn = googleSignIn ?? GoogleSignIn();
+        _googleSignIn = googleSignIn ?? GoogleSignIn(),
+        _firestore = firestore ?? FirebaseFirestore.instance;
 
   AppUser _mapFirebaseUser(fb.User user) {
     return AppUser(
@@ -39,9 +42,24 @@ class FirebaseAuthRepository implements AuthRepository {
     return u == null ? null : _mapFirebaseUser(u);
   }
 
+  Future<void> _syncUserProfile(fb.User user, {String? name}) async {
+    if (user.isAnonymous) return;
+
+    await _firestore.collection('users').doc(user.uid).set({
+      'uid': user.uid,
+      'name': name ?? user.displayName ?? '',
+      'email': user.email,
+      'photoUrl': user.photoURL,
+      'isEmailVerified': user.emailVerified,
+      'createdAt': user.metadata.creationTime?.toIso8601String(),
+      'updatedAt': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
+  }
+
   @override
   Future<AppUser> signInWithEmail({required String email, required String password}) async {
     final credential = await _auth.signInWithEmailAndPassword(email: email, password: password);
+    await _syncUserProfile(credential.user!);
     return _mapFirebaseUser(credential.user!);
   }
 
@@ -54,6 +72,7 @@ class FirebaseAuthRepository implements AuthRepository {
     final credential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
     await credential.user!.updateDisplayName(name);
     await credential.user!.sendEmailVerification();
+    await _syncUserProfile(credential.user!, name: name);
     return _mapFirebaseUser(credential.user!).copyWith(name: name);
   }
 
@@ -69,6 +88,7 @@ class FirebaseAuthRepository implements AuthRepository {
       idToken: googleAuth.idToken,
     );
     final userCredential = await _auth.signInWithCredential(credential);
+    await _syncUserProfile(userCredential.user!);
     return _mapFirebaseUser(userCredential.user!);
   }
 
@@ -95,5 +115,6 @@ class FirebaseAuthRepository implements AuthRepository {
     if (user == null) return;
     if (name != null) await user.updateDisplayName(name);
     if (photoUrl != null) await user.updatePhotoURL(photoUrl);
+    await _syncUserProfile(user, name: name ?? user.displayName);
   }
 }
