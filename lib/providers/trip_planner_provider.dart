@@ -5,6 +5,8 @@ import '../data/repositories/firestore_trip_repository.dart';
 import '../data/repositories/mock_trip_repository.dart';
 import '../domain/repositories/trip_repository.dart';
 import '../models/trip_plan_model.dart';
+import '../core/utils/admin_contact.dart';
+import 'support_provider.dart';
 import 'auth_provider.dart';
 
 const _uuid = Uuid();
@@ -240,6 +242,21 @@ final saveTripProvider = Provider<Future<void> Function(TripPlan)>((ref) {
     if (user == null) return;
     final repo = ref.read(tripRepositoryProvider);
     await repo.saveTrip(user.uid, trip);
+    // Create an initial support ticket message so admins see new trip plans
+    // and users can immediately chat about the trip. This uses the same
+    // addUserMessage action so behavior matches manual messaging.
+    try {
+      final welcome = buildSupportChatWelcomeMessage(destinationName: trip.destinationName, tripId: trip.id);
+      await ref.read(supportActionsProvider).addUserMessage(
+        destinationName: trip.destinationName,
+        tripId: trip.id,
+        message: welcome,
+          );
+    } catch (e) {
+      // Don't fail the save if support message fails; log for debugging.
+      // Firestore rules may reject this if auth/profile isn't synced yet.
+      // We intentionally swallow errors to keep UX smooth.
+    }
   };
 });
 
