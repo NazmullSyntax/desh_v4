@@ -23,6 +23,8 @@ class LiveChatScreen extends ConsumerStatefulWidget {
 class _LiveChatScreenState extends ConsumerState<LiveChatScreen> {
   final _controller = TextEditingController();
   final _scrollController = ScrollController();
+  final List<SupportChatMessage> _pendingMessages = [];
+  String? _lastDebugMessage;
 
   @override
   void dispose() {
@@ -47,11 +49,23 @@ class _LiveChatScreenState extends ConsumerState<LiveChatScreen> {
     final text = _controller.text.trim();
     if (text.isEmpty) return;
 
-    final sent = await ref.read(supportActionsProvider).addUserMessage(
-      destinationName: widget.destinationName,
-      tripId: widget.tripId,
-      message: text,
-    );
+    bool sent = false;
+    try {
+      sent = await ref.read(supportActionsProvider).addUserMessage(
+        destinationName: widget.destinationName,
+        tripId: widget.tripId,
+        message: text,
+      );
+    } catch (e) {
+      setState(() {
+        _lastDebugMessage = 'Send error: $e';
+      });
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error sending message: $e')),
+      );
+      return;
+    }
 
     if (!sent) {
       if (!mounted) return;
@@ -61,8 +75,31 @@ class _LiveChatScreenState extends ConsumerState<LiveChatScreen> {
       return;
     }
 
+    // Optimistically show the message while Firestore updates propagate.
+    final user = ref.read(currentUserProvider);
+    final pending = SupportChatMessage(
+      id: 'local-${DateTime.now().millisecondsSinceEpoch}',
+      sender: user?.uid ?? 'unknown',
+      senderType: SupportChatSender.user,
+      text: text,
+      timestamp: DateTime.now(),
+    );
+    setState(() {
+      _pendingMessages.add(pending);
+      _lastDebugMessage = 'Message queued (optimistic)';
+    });
+
+    // Ask Riverpod to refresh the tickets stream; this can make new
+    // messages appear faster on slower connections.
+    try {
+      ref.refresh(userSupportTicketsProvider);
+    } catch (_) {}
+
     _controller.clear();
     _scrollToBottom();
+    setState(() {
+      _lastDebugMessage = 'Message sent (awaiting server sync)';
+    });
   }
 
   @override
@@ -177,10 +214,29 @@ class _LiveChatScreenState extends ConsumerState<LiveChatScreen> {
             ticket = null;
           }
 
-          final messages = ticket?.messages ?? [];
+          final serverMessages = ticket?.messages ?? [];
+          // Remove any pending messages that have been delivered (match by
+          // text and timestamp proximity) to avoid duplicates.
+          _pendingMessages.removeWhere((p) => serverMessages.any((s) {
+                final diff = s.timestamp.difference(p.timestamp).inSeconds.abs();
+                return s.text == p.text && diff < 3;
+              }));
+
+          final messages = [...serverMessages, ..._pendingMessages];
 
           return Column(
             children: [
+              if (_lastDebugMessage != null)
+                Container(
+                  width: double.infinity,
+                  color: Colors.yellow.shade100,
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: Text(
+                    'Debug: ${_lastDebugMessage!}',
+                    style: TextStyle(color: Colors.black87, fontSize: 12),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               Expanded(
                 child: messages.isEmpty
                     ? Center(
