@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../constants/firebase_constants.dart';
 import '../../domain/repositories/trip_repository.dart';
 import '../../models/trip_plan_model.dart';
 
@@ -14,12 +15,12 @@ class FirestoreTripRepository implements TripRepository {
   FirestoreTripRepository({FirebaseFirestore? firestore}) : _firestore = firestore ?? FirebaseFirestore.instance;
 
   CollectionReference<Map<String, dynamic>> _tripsCollection(String userId) {
-    return _firestore.collection('users').doc(userId).collection('trips');
+    return _firestore.collection(FirebaseConstants.userCollection).doc(userId).collection('trips');
   }
 
   @override
   Stream<List<TripPlan>> watchTrips(String userId) {
-    return _tripsCollection(userId).orderBy('createdAt', descending: true).snapshots().map(
+    return _tripsCollection(userId).orderBy(FirebaseConstants.fieldCreatedAt, descending: true).snapshots().map(
           (snapshot) => snapshot.docs.map((doc) => TripPlan.fromJson(doc.data())).toList(),
         );
   }

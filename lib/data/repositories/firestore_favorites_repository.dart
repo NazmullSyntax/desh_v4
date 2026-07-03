@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../constants/firebase_constants.dart';
 import '../../domain/repositories/favorites_repository.dart';
 
 /// Firestore implementation of [FavoritesRepository].
@@ -13,7 +14,7 @@ class FirestoreFavoritesRepository implements FavoritesRepository {
   FirestoreFavoritesRepository({FirebaseFirestore? firestore}) : _firestore = firestore ?? FirebaseFirestore.instance;
 
   CollectionReference<Map<String, dynamic>> _favoritesCollection(String userId) {
-    return _firestore.collection('users').doc(userId).collection('favorites');
+    return _firestore.collection(FirebaseConstants.userCollection).doc(userId).collection('favorites');
   }
 
   @override

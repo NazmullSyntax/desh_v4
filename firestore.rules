@@ -1,27 +1,14 @@
-// Example Firestore Security Rules for DeshExplorer.
-//
-// Copy this into the Firebase Console (Firestore Database > Rules) once
-// you've enabled Firestore. This assumes Firebase Authentication is also
-// enabled (Email/Password, Google, and Anonymous for Guest login).
-//
-// Data layout this matches:
-//   users/{userId}                         -> basic profile doc (optional)
-//   users/{userId}/trips/{tripId}           -> FirestoreTripRepository
-//   users/{userId}/favorites/{placeId}      -> FirestoreFavoritesRepository
-//   travelGroups/{groupId}                  -> FirestoreGroupsRepository
-//   travelGroups/{groupId}/chat/{messageId} -> group trip-planning chat
-//
-// Core idea: a user can only read/write documents under their own
-// users/{userId} subtree, where {userId} must match their auth uid
-// (including anonymous/guest uids — Firebase issues those too).
-
 rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
 
     match /users/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null && request.auth.uid == userId;
+      allow update, delete: if request.auth != null
+        && request.auth.uid == userId
+        && resource.data.role == 'admin';
 
       match /trips/{tripId} {
         allow read, write: if request.auth != null && request.auth.uid == userId;
@@ -32,38 +19,26 @@ service cloud.firestore {
       }
     }
 
-    // Travel groups: readable by any signed-in user (browsing/discovery),
-    // but only the creator can delete, and joining/leaving is restricted
-    // to changes that don't let someone silently rewrite other people's
-    // membership — a signed-in user may only add/remove *their own* uid
-    // from memberUids/pendingUids, or edit the group if they created it.
+    match /admins/{adminId} {
+      allow read, write: if request.auth != null && request.auth.uid == adminId;
+    }
+
     match /travelGroups/{groupId} {
       allow read: if request.auth != null;
-      allow create: if request.auth != null
-                    && request.resource.data.createdByUid == request.auth.uid;
-      allow update: if request.auth != null
-                    && (
-                         // Creator can edit anything on their own group.
-                         resource.data.createdByUid == request.auth.uid ||
-                         // Any other signed-in user may only change their
-                         // own membership/request status, not other fields.
-                         request.resource.data.diff(resource.data).affectedKeys()
-                           .hasOnly(['members', 'pendingRequests', 'memberUids', 'pendingUids'])
-                       );
+      allow create: if request.auth != null && request.resource.data.createdByUid == request.auth.uid;
+      allow update: if request.auth != null && (
+        resource.data.createdByUid == request.auth.uid ||
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['members', 'pendingRequests', 'memberUids', 'pendingUids'])
+      );
       allow delete: if request.auth != null && resource.data.createdByUid == request.auth.uid;
 
-      // Chat: any current member can read/post; nobody can edit or delete
-      // another traveler's message after the fact.
       match /chat/{messageId} {
         allow read: if request.auth != null;
-        allow create: if request.auth != null
-                      && request.resource.data.senderUid == request.auth.uid;
+        allow create: if request.auth != null && request.resource.data.senderUid == request.auth.uid;
         allow update, delete: if false;
       }
     }
 
-    // Support tickets: customers can create and update their own ticket thread,
-    // admins can view and reply to all tickets.
     match /supportTickets/{ticketId} {
       function isSignedIn() {
         return request.auth != null;
@@ -98,7 +73,5 @@ service cloud.firestore {
         )
       );
     }
-
-    // Everything else is closed by default — no catch-all allow.
   }
 }

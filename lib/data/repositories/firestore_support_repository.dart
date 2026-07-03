@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../constants/firebase_constants.dart';
 import '../../domain/repositories/support_repository.dart';
 import '../../models/support_ticket_model.dart';
 
@@ -22,7 +23,7 @@ class FirestoreSupportRepository implements SupportRepository {
 
   @override
   Stream<List<SupportTicket>> watchAllTickets() {
-    return _tickets.orderBy('createdAt', descending: true).snapshots().map(
+    return _tickets.orderBy(FirebaseConstants.fieldCreatedAt, descending: true).snapshots().map(
       (snap) => snap.docs.map(_fromDoc).toList(),
     ).handleError((error) {
       debugPrint('Error watching all tickets: $error');
@@ -39,7 +40,7 @@ class FirestoreSupportRepository implements SupportRepository {
 
   @override
   Stream<List<SupportTicket>> watchUserTickets(String userId) {
-    return _tickets.where('userId', isEqualTo: userId).orderBy('createdAt', descending: true).snapshots().map(
+    return _tickets.where('userId', isEqualTo: userId).orderBy(FirebaseConstants.fieldCreatedAt, descending: true).snapshots().map(
       (snap) => snap.docs.map(_fromDoc).toList(),
     ).handleError((error) {
       debugPrint('Error watching user tickets: $error');
@@ -83,7 +84,7 @@ class FirestoreSupportRepository implements SupportRepository {
         'destinationName': destinationName,
         'tripId': tripId,
         'messages': [newMessage.toJson()],
-        'createdAt': DateTime.now().toIso8601String(),
+        FirebaseConstants.fieldCreatedAt: DateTime.now().toIso8601String(),
         'isResolved': false,
       });
     }

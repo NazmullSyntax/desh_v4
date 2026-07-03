@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/router/app_router.dart';
-import '../../providers/auth_provider.dart';
+import '../../services/admin_auth_service.dart';
 import '../../widgets/common/app_text_field.dart';
 
 class AdminLoginScreen extends ConsumerStatefulWidget {
@@ -40,26 +40,20 @@ class _AdminLoginScreenState extends ConsumerState<AdminLoginScreen> {
     }
 
     setState(() => _isLoading = true);
-    final controller = ref.read(authControllerProvider.notifier);
-    final success = await controller.signIn(email, password);
+    try {
+      final authService = AdminAuthService();
+      await authService.loginAdmin(email: email, password: password);
 
-    if (!mounted) return;
-    if (success) {
-      final user = ref.read(currentUserProvider);
-      if (user?.isAdmin ?? false) {
-        context.go(AppRoutes.adminPanel);
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('This account is not an admin account.')),
-        );
-      }
-    } else {
-      final authError = ref.read(authControllerProvider).error;
+      if (!mounted) return;
+      context.go(AppRoutes.adminPanel);
+    } catch (error) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(authError?.toString() ?? 'Invalid admin credentials')),
+        SnackBar(content: Text(error.toString().replaceAll('Exception: ', ''))),
       );
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
     }
-    if (mounted) setState(() => _isLoading = false);
   }
 
   Future<void> _createAdminAccount() async {
@@ -75,30 +69,22 @@ class _AdminLoginScreenState extends ConsumerState<AdminLoginScreen> {
     }
 
     setState(() => _isLoading = true);
-    final controller = ref.read(authControllerProvider.notifier);
-    final success = await controller.register(name, email, password, isAdmin: true);
+    try {
+      final authService = AdminAuthService();
+      await authService.registerAdmin(name: name, email: email, password: password);
 
-    if (!mounted) return;
-    if (success) {
-      final user = ref.read(currentUserProvider);
-      if (user?.isAdmin ?? false) {
-        context.go(AppRoutes.adminPanel);
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Admin account created. Please sign in again.')),
-        );
-      }
-    } else {
-      final authError = ref.read(authControllerProvider).error;
-      var errorMessage = authError?.toString() ?? 'Could not create admin account';
-      if (authError != null && authError.toString().contains('email-already-in-use')) {
-        errorMessage = 'This email is already registered. Please log in instead.';
-      }
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(errorMessage)),
+        const SnackBar(content: Text('Admin account created successfully! Please login.')),
       );
+    } catch (error) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(error.toString().replaceAll('Exception: ', ''))),
+      );
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
     }
-    if (mounted) setState(() => _isLoading = false);
   }
 
   @override
