@@ -164,7 +164,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       Text('Admin Portal', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.primary)),
                       const SizedBox(height: 8),
                       OutlinedButton.icon(
-                        onPressed: () => context.push(AppRoutes.adminLogin),
+                        onPressed: () => context.push(AppRoutes.adminPanel),
                         icon: const Icon(Icons.admin_panel_settings_outlined),
                         label: const Text('Admin Login'),
                         style: OutlinedButton.styleFrom(

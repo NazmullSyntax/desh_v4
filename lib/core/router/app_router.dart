@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../../models/app_user_model.dart';
 import '../../providers/auth_provider.dart';
 import '../../screens/admin/admin_login_screen.dart';
+import '../../screens/admin/admin_panel_screen.dart';
 import '../../screens/auth/forgot_password_screen.dart';
 import '../../screens/auth/login_screen.dart';
 import '../../screens/auth/register_screen.dart';
@@ -35,6 +36,7 @@ class AppRoutes {
   static const adminLogin = '/admin-login';
   static const register = '/register';
   static const forgotPassword = '/forgot-password';
+  static const adminPanel = '/admin-panel';
 
   static const home = '/home';
   static const guide = '/guide';
@@ -74,18 +76,25 @@ GoRouter buildRouter(Ref ref) {
     initialLocation: AppRoutes.splash,
     redirect: (context, state) {
       final authState = ref.read(authStateProvider);
+      final currentUser = ref.read(currentUserProvider);
       final isLoggedIn = authState.maybeWhen(data: (u) => u != null, orElse: () => false);
+      final isAdmin = currentUser?.isAdmin ?? false;
       final isAuthRoute = [
         AppRoutes.login,
         AppRoutes.register,
         AppRoutes.forgotPassword,
         AppRoutes.onboarding,
         AppRoutes.splash,
+        AppRoutes.adminLogin,
       ].contains(state.matchedLocation);
 
       // Still resolving the auth stream — let the splash screen handle it.
       if (authState.isLoading && state.matchedLocation == AppRoutes.splash) {
         return null;
+      }
+
+      if (state.matchedLocation == AppRoutes.adminPanel && !isAdmin) {
+        return AppRoutes.adminLogin;
       }
 
       if (!isLoggedIn && !isAuthRoute) {
@@ -101,6 +110,7 @@ GoRouter buildRouter(Ref ref) {
       GoRoute(path: AppRoutes.onboarding, builder: (context, state) => const OnboardingScreen()),
       GoRoute(path: AppRoutes.login, builder: (context, state) => const LoginScreen()),
       GoRoute(path: AppRoutes.adminLogin, builder: (context, state) => const AdminLoginScreen()),
+      GoRoute(path: AppRoutes.adminPanel, builder: (context, state) => const AdminPanelScreen()),
       GoRoute(path: AppRoutes.register, builder: (context, state) => const RegisterScreen()),
       GoRoute(path: AppRoutes.forgotPassword, builder: (context, state) => const ForgotPasswordScreen()),
 

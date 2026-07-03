@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
+import '../../core/router/app_router.dart';
 import '../../core/theme/app_colors.dart';
 import '../../models/support_ticket_model.dart';
+import '../../providers/auth_provider.dart';
 import '../../providers/support_provider.dart';
 
 class AdminPanelScreen extends ConsumerWidget {
@@ -49,9 +52,12 @@ class AdminPanelScreen extends ConsumerWidget {
                   actions: [
                     TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
                     TextButton(
-                      onPressed: () {
+                      onPressed: () async {
                         Navigator.pop(ctx);
-                        Navigator.of(context).pop();
+                        await ref.read(authControllerProvider.notifier).signOut();
+                        if (context.mounted) {
+                          context.go(AppRoutes.login);
+                        }
                       },
                       child: const Text('Logout', style: TextStyle(color: Colors.red)),
                     ),

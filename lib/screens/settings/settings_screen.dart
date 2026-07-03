@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants/app_spacing.dart';
+import '../../core/router/app_router.dart';
 import '../../core/theme/app_colors.dart';
 import '../../providers/theme_provider.dart';
 
@@ -109,7 +110,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 title: const Text('Admin Panel'),
                 subtitle: const Text('Manage support tickets'),
                 trailing: const Icon(Icons.arrow_forward),
-                onTap: () => context.push('/admin-login'),
+                onTap: () => context.push(AppRoutes.adminPanel),
               ),
             ],
           ),
