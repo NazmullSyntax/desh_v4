@@ -178,7 +178,7 @@ class _FailedView extends StatelessWidget {
           width: 96,
           height: 96,
           decoration: BoxDecoration(color: AppColors.error.withValues(alpha: 0.12), shape: BoxShape.circle),
-          child: const Icon(Icons.error_outline, color: AppColors.error, size: 56),
+          child: const Icon(Icons.error_outline, color: AppColors.error, size: 55),
         ),
         const SizedBox(height: 24),
         Text('Payment Failed', style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 24)),
