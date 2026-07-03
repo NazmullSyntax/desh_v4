@@ -54,8 +54,9 @@ class _AdminLoginScreenState extends ConsumerState<AdminLoginScreen> {
         );
       }
     } else {
+      final authError = ref.read(authControllerProvider).error;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Invalid admin credentials')),
+        SnackBar(content: Text(authError?.toString() ?? 'Invalid admin credentials')),
       );
     }
     if (mounted) setState(() => _isLoading = false);
@@ -88,8 +89,13 @@ class _AdminLoginScreenState extends ConsumerState<AdminLoginScreen> {
         );
       }
     } else {
+      final authError = ref.read(authControllerProvider).error;
+      var errorMessage = authError?.toString() ?? 'Could not create admin account';
+      if (authError != null && authError.toString().contains('email-already-in-use')) {
+        errorMessage = 'This email is already registered. Please log in instead.';
+      }
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Could not create admin account')),
+        SnackBar(content: Text(errorMessage)),
       );
     }
     if (mounted) setState(() => _isLoading = false);
