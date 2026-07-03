@@ -92,7 +92,7 @@ class _LiveChatScreenState extends ConsumerState<LiveChatScreen> {
     // Ask Riverpod to refresh the tickets stream; this can make new
     // messages appear faster on slower connections.
     try {
-      ref.refresh(userSupportTicketsProvider);
+      final _ = ref.refresh(userSupportTicketsProvider);
     } catch (_) {}
 
     _controller.clear();
@@ -156,7 +156,6 @@ class _LiveChatScreenState extends ConsumerState<LiveChatScreen> {
         // send the first message immediately rather than blocking on the
         // stream. This avoids an indefinite spinner when Firestore is slow.
         loading: () {
-          final messages = <SupportChatMessage>[];
           return Column(
             children: [
               Expanded(
@@ -233,7 +232,7 @@ class _LiveChatScreenState extends ConsumerState<LiveChatScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   child: Text(
                     'Debug: ${_lastDebugMessage!}',
-                    style: TextStyle(color: Colors.black87, fontSize: 12),
+                    style: const TextStyle(color: Colors.black87, fontSize: 12),
                     textAlign: TextAlign.center,
                   ),
                 ),
