@@ -22,7 +22,10 @@ class ProfileScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Profile'),
         actions: [
-          IconButton(onPressed: () => context.push(AppRoutes.settings), icon: const Icon(Icons.settings_outlined)),
+          IconButton(
+            onPressed: () => context.push(AppRoutes.settings), 
+            icon: const Icon(Icons.settings_outlined),
+          ),
         ],
       ),
       body: ListView(
@@ -112,39 +115,18 @@ class ProfileScreen extends ConsumerWidget {
           const SizedBox(height: 16),
           OutlinedButton.icon(
             onPressed: () async {
-              final confirmed = await showDialog<bool>(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: const Text('Log Out'),
-                  content: const Text('Are you sure you want to log out?'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context, false),
-                      child: const Text('Cancel'),
-                    ),
-                    TextButton(
-                      onPressed: () => Navigator.pop(context, true),
-                      child: const Text('Log Out', style: TextStyle(color: AppColors.error)),
-                    ),
-                  ],
-                ),
-              );
-
-              if (confirmed == true && context.mounted) {
-                try {
-                  await ref.read(authControllerProvider.notifier).signOut();
-                  if (context.mounted) {
-                    context.go(AppRoutes.login);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Logged out successfully'), duration: Duration(seconds: 2)),
-                    );
-                  }
-                } catch (e) {
-                  if (context.mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Error logging out: $e'), backgroundColor: AppColors.error),
-                    );
-                  }
+              FocusScope.of(context).unfocus();
+              try {
+                // Directly execution without confirmation dialog
+                await ref.read(authControllerProvider.notifier).signOut();
+                if (context.mounted) {
+                  context.go(AppRoutes.login);
+                }
+              } catch (e) {
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Error logging out: $e'), backgroundColor: AppColors.error),
+                  );
                 }
               }
             },
@@ -158,7 +140,6 @@ class ProfileScreen extends ConsumerWidget {
     );
   }
 }
-
 
 class _StatCard extends StatelessWidget {
   final IconData icon;

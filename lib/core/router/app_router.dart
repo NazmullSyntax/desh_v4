@@ -89,7 +89,7 @@ GoRouter buildRouter(Ref ref) {
       ].contains(state.matchedLocation);
 
       // Still resolving the auth stream — let the splash screen handle it.
-      if (authState.isLoading && state.matchedLocation == AppRoutes.splash) {
+      if (authState.isLoading) {
         return null;
       }
 

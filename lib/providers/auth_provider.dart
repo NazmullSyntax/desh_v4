@@ -46,12 +46,12 @@ final profileRefreshProvider = StateNotifierProvider<ProfileRefreshController, i
 /// edited name/photo show up immediately everywhere this is watched.
 final currentUserProvider = Provider<AppUser?>((ref) {
   ref.watch(profileRefreshProvider); // dependency only — triggers re-run on bump()
-  final streamUser = ref.watch(authStateProvider).maybeWhen(data: (user) => user, orElse: () => null);
-  if (streamUser == null) return null;
-  // Prefer the freshest snapshot directly from the repository if available,
-  // falling back to the last stream value (e.g. for the Mock repository,
-  // which already keeps both in sync).
   final repo = ref.watch(authRepositoryProvider);
+  final streamUser = ref.watch(authStateProvider).maybeWhen(data: (user) => user, orElse: () => null);
+  // Prefer the freshest snapshot directly from the repository if available,
+  // falling back to the last stream value. This avoids a race where the
+  // auth stream is still resolving after sign-in but Firebase already has
+  // an authenticated user.
   return repo.currentUser ?? streamUser;
 });
 

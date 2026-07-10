@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/router/app_router.dart';
+import '../../providers/auth_provider.dart';
 import '../../services/admin_auth_service.dart';
 import '../../widgets/common/app_text_field.dart';
 
@@ -29,6 +30,7 @@ class _AdminLoginScreenState extends ConsumerState<AdminLoginScreen> {
   }
 
   Future<void> _login() async {
+    FocusScope.of(context).unfocus();
     final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
 
@@ -44,6 +46,10 @@ class _AdminLoginScreenState extends ConsumerState<AdminLoginScreen> {
       final authService = AdminAuthService();
       await authService.loginAdmin(email: email, password: password);
 
+      // FIX: Force Riverpod to clear cache and look for the new admin session immediately
+      ref.invalidate(authStateProvider);
+      await ref.read(authStateProvider.future);
+
       if (!mounted) return;
       context.go(AppRoutes.adminPanel);
     } catch (error) {
@@ -57,6 +63,7 @@ class _AdminLoginScreenState extends ConsumerState<AdminLoginScreen> {
   }
 
   Future<void> _createAdminAccount() async {
+    FocusScope.of(context).unfocus();
     final name = _nameController.text.trim();
     final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
@@ -152,7 +159,7 @@ class _AdminLoginScreenState extends ConsumerState<AdminLoginScreen> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
-                onPressed: _login,
+                onPressed: _isLoading ? null : _login,
                 icon: const Icon(Icons.login),
                 label: Text(_isLoading ? 'Logging in...' : 'Login as Admin'),
                 style: ElevatedButton.styleFrom(
@@ -165,7 +172,7 @@ class _AdminLoginScreenState extends ConsumerState<AdminLoginScreen> {
             SizedBox(
               width: double.infinity,
               child: OutlinedButton.icon(
-                onPressed: _createAdminAccount,
+                onPressed: _isLoading ? null : _createAdminAccount,
                 icon: const Icon(Icons.person_add_alt_1),
                 label: Text(_isLoading ? 'Creating account...' : 'Create Admin Account'),
                 style: OutlinedButton.styleFrom(

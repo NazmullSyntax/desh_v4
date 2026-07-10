@@ -44,6 +44,7 @@ class AdminPanelScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
+              FocusScope.of(context).unfocus();
               showDialog(
                 context: context,
                 builder: (ctx) => AlertDialog(

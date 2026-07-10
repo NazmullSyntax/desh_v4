@@ -29,6 +29,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   }
 
   Future<void> _submit() async {
+    FocusScope.of(context).unfocus();
     if (!_formKey.currentState!.validate()) return;
     final controller = ref.read(authControllerProvider.notifier);
     final success = await controller.signIn(_emailController.text.trim(), _passwordController.text);
@@ -40,12 +41,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   }
 
   Future<void> _continueAsGuest() async {
+    FocusScope.of(context).unfocus();
     final controller = ref.read(authControllerProvider.notifier);
     final success = await controller.continueAsGuest();
     if (success && mounted) context.go(AppRoutes.home);
   }
 
   Future<void> _signInWithGoogle() async {
+    FocusScope.of(context).unfocus();
     final controller = ref.read(authControllerProvider.notifier);
     final success = await controller.signInWithGoogle();
     if (success && mounted) context.go(AppRoutes.home);
@@ -164,7 +167,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       Text('Admin Portal', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.primary)),
                       const SizedBox(height: 8),
                       OutlinedButton.icon(
-                        onPressed: () => context.push(AppRoutes.adminPanel),
+                        onPressed: () => context.push(AppRoutes.adminLogin),
                         icon: const Icon(Icons.admin_panel_settings_outlined),
                         label: const Text('Admin Login'),
                         style: OutlinedButton.styleFrom(

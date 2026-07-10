@@ -26,28 +26,32 @@ class PrimaryButton extends StatelessWidget {
     return SizedBox(
       width: width ?? double.infinity,
       height: 54,
-      child: ElevatedButton(
-        onPressed: isLoading ? null : onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color ?? AppColors.primary,
-          disabledBackgroundColor: (color ?? AppColors.primary).withValues(alpha: 0.6),
-        ),
-        child: isLoading
-            ? const SizedBox(
-                height: 22,
-                width: 22,
-                child: CircularProgressIndicator(strokeWidth: 2.4, color: Colors.white),
-              )
-            : Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (icon != null) ...[
-                    Icon(icon, size: 20, color: Colors.white),
-                    const SizedBox(width: 8),
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTapDown: (_) => FocusScope.of(context).unfocus(),
+        child: ElevatedButton(
+          onPressed: isLoading ? null : onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: color ?? AppColors.primary,
+            disabledBackgroundColor: (color ?? AppColors.primary).withValues(alpha: 0.6),
+          ),
+          child: isLoading
+              ? const SizedBox(
+                  height: 22,
+                  width: 22,
+                  child: CircularProgressIndicator(strokeWidth: 2.4, color: Colors.white),
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (icon != null) ...[
+                      Icon(icon, size: 20, color: Colors.white),
+                      const SizedBox(width: 8),
+                    ],
+                    Text(label),
                   ],
-                  Text(label),
-                ],
-              ),
+                ),
+        ),
       ),
     );
   }
